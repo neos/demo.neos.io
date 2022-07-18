@@ -4,10 +4,11 @@ The distribution for demo.neos.io
 
 ## Setup & Installation
 
-We use `local beach` from [Flownative](https://beach.flownative.com) for the development.
+We use Localbeach from [Flownative](https://beach.flownative.com) for the development.
 That leads to the requirements:
-* docker
-* beach
+
+* [Docker](https://www.docker.com/)
+* [Localbeach](https://www.flownative.com/en/products/localbeach.html)
 
 ### Installing the Local Beach CLI
 
@@ -22,7 +23,7 @@ $ beach version
 ### Install dockerized composer from flownative
 
 As the PHP container from beach has no composer installed, we need to use the composer container from `flownative` to run the composer commands.
-Therefore, we need to add a function to our `bashrc` or `zshrc`.
+Therefore, we need to add a function to our `.bashrc` or `.zshrc`.
 
 ```bash
 composer80 () {
@@ -42,6 +43,8 @@ composer80 () {
 }
 ```
 
+After you added the function, you should run `source .zshrc` or `source .bashrc` depends on which shell you are using.
+
 ### Setup beach instance
 
 Clone the repository and install via composer.
@@ -59,6 +62,7 @@ beach start
 ```
 
 If you run the instance for the first time, we also have to import the site.
+
 ```bash
 beach setup-https
 beach exec
