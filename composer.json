@@ -23,7 +23,8 @@
     "neos/neos": "^8.0 || dev-master",
     "neos/demo": "^7.3 || dev-master",
     "neos/cli-setup": "^8.0 || dev-master",
-    "flownative/google-cloudstorage": "^5.3"
+    "flownative/google-cloudstorage": "^5.3",
+    "neos/neos-ui": "^8.0"
   },
   "repositories": {
     "distributionPackages": {
