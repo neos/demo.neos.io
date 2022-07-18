@@ -38,7 +38,7 @@ composer80 () {
         --volume $(pwd):/application:delegated \
         --volume $HOME/.composer/cache:/home/composer/cache:delegated \
         --volume $HOME/.composer/auth.json:/home/composer/auth.json \
-        flownative/composer:8.0 "$@"
+        flownative/composer2:8.0 "$@"
 }
 ```
 
