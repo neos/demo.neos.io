@@ -1,6 +1,6 @@
-# Demo Distribituon
+# Demo Distribution
 
-The distribition for demo.neos.io
+The distribution for demo.neos.io
 
 ## Setup & Installation
 
@@ -21,8 +21,8 @@ $ beach version
 
 ### Install dockerized composer from flownative
 
-As the php container from beach has no composer installed, we need to use the composer container from `flownative` to run the composer commands.
-Therefore we need to add a function to our `bashrc` or `zshrc`.
+As the PHP container from beach has no composer installed, we need to use the composer container from `flownative` to run the composer commands.
+Therefore, we need to add a function to our `bashrc` or `zshrc`.
 
 ```bash
 composer80 () {
@@ -58,16 +58,16 @@ Start the beach instance and if you run the instance.
 beach start
 ```
 
-If you run the instance for the first time we also need to import the site.
+If you run the instance for the first time, we also have to import the site.
 ```bash
 beach setup-https
 beach exec
 ./flow site:import Neos.Demo
 ```
 
-After that the instance should be available under https://demoneosio.localbeach.net
+After that, the instance should be available under https://demoneosio.localbeach.net
 
 
 ## Hosting
 
-This website is hosted on [Flownative Beach](https://beach.flownative.com) in the Neos organisation.
+This website is hosted on [Flownative Beach](https://beach.flownative.com) in the Neos organization.
