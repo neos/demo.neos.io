@@ -1,0 +1,65 @@
+privilegeTargets:
+  'Neos\Media\Security\Authorization\Privilege\ReadAssetPrivilege':
+    'Neos.Demo:SeeOwnAssetCollectionContent':
+      matcher: 'isInCollection("context.userInformation.personalWorkspaceName")'
+
+  'Neos\Demo\UserRegistration\Security\Authorization\Privilege\ReadAssetPrivilege':
+    'Neos.Demo:SeeAssetsInOthersCollections':
+      matcher: 'isWithoutCollectionOrOutsideOfCollection("context.userInformation.personalWorkspaceName")'
+
+  'Neos\Media\Security\Authorization\Privilege\ReadAssetCollectionPrivilege':
+    'Neos.Demo:SeeOwnAssetCollection':
+      matcher: 'isTitled("context.userInformation.personalWorkspaceName")'
+
+    'Neos.Demo:SeeOtherAssetCollectionsThanOwn':
+      matcher: '!isTitled("context.userInformation.personalWorkspaceName")'
+
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'Neos.Demo:ManageAssets':
+      matcher: 'method(Neos\Media\Browser\Controller\(Asset|Image)Controller->(update|initializeUpload|upload|tagAsset|createTag|editTag|updateTag|deleteTag|addAssetToCollection)Action()) || method(Neos\Media\Browser\Controller\ImageVariantController->(update)Action())'
+
+roles:
+  'Neos.Neos:Editor':
+    privileges:
+      -
+        privilegeTarget: 'Neos.Demo:ManageAssets'
+        permission: GRANT
+
+  'Neos.Neos:Administrator':
+    privileges:
+      -
+        privilegeTarget: 'Neos.Demo:SeeOwnAssetCollectionContent'
+        permission: GRANT
+      -
+        privilegeTarget: 'Neos.Demo:SeeAssetsInOthersCollections'
+        permission: GRANT
+      -
+        privilegeTarget: 'Neos.Demo:SeeOwnAssetCollection'
+        permission: GRANT
+      -
+        privilegeTarget: 'Neos.Demo:SeeOtherAssetCollectionsThanOwn'
+        permission: GRANT
+
+  'Neos.Neos:RestrictedEditor':
+    privileges:
+      -
+        privilegeTarget: 'Neos.Demo:SeeOwnAssetCollectionContent'
+        permission: GRANT
+      -
+        privilegeTarget: 'Neos.Demo:SeeAssetsInOthersCollections'
+        permission: DENY
+      -
+        privilegeTarget: 'Neos.Demo:SeeOwnAssetCollection'
+        permission: GRANT
+      -
+        privilegeTarget: 'Neos.Demo:SeeOtherAssetCollectionsThanOwn'
+        permission: DENY
+      -
+        privilegeTarget: 'Neos.Demo:ManageAssets'
+        permission: DENY
+      -
+        privilegeTarget: 'Neos.Media.Browser:ManageTags'
+        permission: DENY
+      -
+        privilegeTarget: 'Neos.Media.Browser:ReplaceAssetResource'
+        permission: DENY
