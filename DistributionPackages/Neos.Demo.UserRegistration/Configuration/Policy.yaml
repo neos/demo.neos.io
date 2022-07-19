@@ -19,6 +19,8 @@ privilegeTargets:
       matcher: 'method(Neos\Media\Browser\Controller\(Asset|Image)Controller->(update|initializeUpload|upload|tagAsset|createTag|editTag|updateTag|deleteTag|addAssetToCollection)Action()) || method(Neos\Media\Browser\Controller\ImageVariantController->(update)Action())'
     'Neos.Demo:ManageNewMediaUi':
       matcher: 'method(Flowpack\Media\Ui\GraphQL\Resolver\Type\MutationResolver->(tagAsset|setAssetTags|setAssetCollections|replaceAsset|createAssetCollection|updateAssetCollection|deleteAssetCollection|createTag|updateTag|deleteTag)())'
+    'Neos.Demo:ManageWorkspaces':
+      matcher: 'method(Neos\Neos\Controller\Module\Management\WorkspacesController->(new|create|edit|delete)Action())'
 
 roles:
   'Neos.Neos:Editor':
@@ -28,6 +30,9 @@ roles:
         permission: GRANT
       -
         privilegeTarget: 'Neos.Demo:ManageNewMediaUi'
+        permission: GRANT
+      -
+        privilegeTarget: 'Neos.Demo:ManageWorkspaces'
         permission: GRANT
 
   'Neos.Neos:Administrator':
@@ -70,4 +75,7 @@ roles:
         permission: DENY
       -
         privilegeTarget: 'Neos.Media.Browser:ReplaceAssetResource'
+        permission: DENY
+      -
+        privilegeTarget: 'Neos.Demo:ManageWorkspaces'
         permission: DENY

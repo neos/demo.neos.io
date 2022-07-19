@@ -5,5 +5,7 @@ Neos:
         submodules:
           media:
             enabled: false
+          history:
+            enabled: false
           mediaui:
             position: 'start'
