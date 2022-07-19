@@ -14,6 +14,9 @@
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin",
+        "platform": {
+            "php": "8.0"
+        },
         "allow-plugins": {
             "neos/composer-plugin": true
         }
@@ -25,12 +28,17 @@
         "neos/neos": "^8.0",
         "neos/neosdemo-userregistration": "@dev",
         "neos/neos-ui": "^8.0",
-        "php": "^8.0"
+        "wwwision/privateresources": "dev-update-8",
+        "php": "8.0"
     },
     "repositories": {
         "distributionPackages": {
             "type": "path",
             "url": "./DistributionPackages/*"
+        },
+        "privateResources": {
+            "type": "vcs",
+            "url": "git@github.com:regniets/Wwwision.PrivateResources.git"
         }
     },
     "scripts": {

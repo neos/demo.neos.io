@@ -13,7 +13,13 @@
     },
     "extra": {
         "neos": {
-            "package-key": "Neos.Demo.UserRegistration"
+            "package-key": "Neos.Demo.UserRegistration",
+            "loading-order": {
+                "after": [
+                    "neos/demo",
+                    "wwwision/privateresources"
+                ]
+            }
         }
     }
 }
