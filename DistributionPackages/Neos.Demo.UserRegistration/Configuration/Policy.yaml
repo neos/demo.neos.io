@@ -17,12 +17,17 @@ privilegeTargets:
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
     'Neos.Demo:ManageAssets':
       matcher: 'method(Neos\Media\Browser\Controller\(Asset|Image)Controller->(update|initializeUpload|upload|tagAsset|createTag|editTag|updateTag|deleteTag|addAssetToCollection)Action()) || method(Neos\Media\Browser\Controller\ImageVariantController->(update)Action())'
+    'Neos.Demo:ManageNewMediaUi':
+      matcher: 'method(Flowpack\Media\Ui\GraphQL\Resolver\Type\MutationResolver->(tagAsset|setAssetTags|setAssetCollections|replaceAsset|createAssetCollection|updateAssetCollection|deleteAssetCollection|createTag|updateTag|deleteTag)())'
 
 roles:
   'Neos.Neos:Editor':
     privileges:
       -
         privilegeTarget: 'Neos.Demo:ManageAssets'
+        permission: GRANT
+      -
+        privilegeTarget: 'Neos.Demo:ManageNewMediaUi'
         permission: GRANT
 
   'Neos.Neos:Administrator':
@@ -56,6 +61,9 @@ roles:
         permission: DENY
       -
         privilegeTarget: 'Neos.Demo:ManageAssets'
+        permission: DENY
+      -
+        privilegeTarget: 'Neos.Demo:ManageNewMediaUi'
         permission: DENY
       -
         privilegeTarget: 'Neos.Media.Browser:ManageTags'

@@ -6,6 +6,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Neos\Media\Domain\Model\Asset;
 use Neos\Media\Domain\Model\AssetCollection;
+use Neos\Media\Domain\Model\AssetInterface;
 use Neos\Media\Domain\Repository\AssetCollectionRepository;
 use Neos\Neos\Service\UserService;
 use Neos\Flow\Security\Policy\PolicyService;
@@ -47,13 +48,28 @@ class AssetManipulator {
     protected $logger;
 
     /**
-     * Assigns an asset collection automatically for RestrictedEditors
-     *
      * @param Asset $asset
      * @param NodeInterface $node
      * @param string $propertyName
+     * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function addAssetCollectionToAsset(Asset $asset, NodeInterface $node, string $propertyName)
+    public function assetUploaded(Asset $asset, NodeInterface $node, string $propertyName) {
+        $this->addAssetCollectionToAsset($asset);
+    }
+
+    /**
+     * @param AssetInterface $asset
+     */
+    public function assetCreated(AssetInterface $asset) {
+        $this->addAssetCollectionToAsset($asset);
+    }
+
+    /**
+     * Generic method for adding the collection to the asset.
+     *
+     * @param mixed $asset
+     */
+    protected function addAssetCollectionToAsset($asset)
     {
         if ($this->isRestrictedEditor() === false) {
             return;
@@ -73,6 +89,7 @@ class AssetManipulator {
         $userAssetCollection->addAsset($asset);
         $this->assetCollectionRepository->update($userAssetCollection);
     }
+
 
     /**
      * checks if editor has RestrictedEditorRole

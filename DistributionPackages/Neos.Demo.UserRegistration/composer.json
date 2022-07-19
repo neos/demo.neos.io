@@ -17,7 +17,8 @@
             "loading-order": {
                 "after": [
                     "neos/demo",
-                    "wwwision/privateresources"
+                    "wwwision/privateresources",
+                    "flowpack/media-ui"
                 ]
             }
         }
