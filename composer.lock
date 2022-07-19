@@ -3403,12 +3403,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/Neos.Demo.git",
-                "reference": "75783ed56a50b8095bab7d29dd8e4c5c10ce716d"
+                "reference": "ffacfa3e24ef07c66e152f0e2590cf07bb8f148b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/75783ed56a50b8095bab7d29dd8e4c5c10ce716d",
-                "reference": "75783ed56a50b8095bab7d29dd8e4c5c10ce716d",
+                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/ffacfa3e24ef07c66e152f0e2590cf07bb8f148b",
+                "reference": "ffacfa3e24ef07c66e152f0e2590cf07bb8f148b",
                 "shasum": ""
             },
             "require": {
@@ -3531,7 +3531,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-07-19T12:08:56+00:00"
+            "time": "2022-07-19T18:23:41+00:00"
         },
         {
             "name": "neos/diff",
@@ -4900,7 +4900,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.Demo.UserRegistration",
-                "reference": "3553c32e9b0fce23e720a0a32de82c1d6f27cc95"
+                "reference": "d220b3432884e20cd4d62f86745ca7121e93bf12"
             },
             "require": {
                 "neos/demo": "*"
@@ -4912,7 +4912,8 @@
                     "loading-order": {
                         "after": [
                             "neos/demo",
-                            "wwwision/privateresources"
+                            "wwwision/privateresources",
+                            "flowpack/media-ui"
                         ]
                     }
                 }
