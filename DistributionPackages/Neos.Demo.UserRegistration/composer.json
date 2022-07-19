@@ -1,0 +1,22 @@
+{
+    "description": "Neos Demo User Registration Package",
+    "name": "neos/neosdemo-userregistration",
+    "type": "neos-package",
+    "license": "GPL-3.0+",
+    "require": {
+        "neos/demo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neos\\Demo\\UserRegistration\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Neos.Demo.UserRegistration",
+            "loading-order": {
+                "after": [ "neos/demo" ]
+            }
+        }
+    }
+}

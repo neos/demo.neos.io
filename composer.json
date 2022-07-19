@@ -20,8 +20,9 @@
   },
   "require": {
     "php": "^8.0",
-    "neos/neos": "^8.0 || dev-master",
-    "neos/demo": "^7.3 || dev-master",
+    "neos/neos": "^8.0",
+    "neos/demo": "dev-update/registration",
+    "neos/neosdemo-userregistration": "@dev",
     "neos/cli-setup": "^8.0 || dev-master",
     "flownative/google-cloudstorage": "^5.3",
     "neos/neos-ui": "^8.0"

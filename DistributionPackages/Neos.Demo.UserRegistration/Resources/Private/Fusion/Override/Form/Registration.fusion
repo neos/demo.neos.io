@@ -1,0 +1,23 @@
+prototype(Neos.Demo:Content.Registration) {
+  action {
+    createBackendUser {
+      options.roles.@process.changeRoles = ${['Neos.Neos:RestrictedEditor']}
+    }
+
+    addUserWorkspace {
+      type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserWorkspace'
+      options {
+        username = ${data.username}
+      }
+      @position = 'after createBackendUser'
+    }
+
+    addUserAssetCollection {
+      type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserAssetCollection'
+      options {
+        username = ${data.username}
+      }
+      @position = 'after addUserWorkspace'
+    }
+  }
+}

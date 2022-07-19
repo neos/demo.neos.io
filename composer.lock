@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e6f4a813e8245f9f15ec809b4c899c4",
+    "content-hash": "12619f11df9e572853f3091769ce5d9f",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3478,16 +3478,16 @@
         },
         {
             "name": "neos/demo",
-            "version": "dev-master",
+            "version": "dev-update/registration",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/Neos.Demo.git",
-                "reference": "8f44bd3df138520497a2571db66be47c94304e02"
+                "reference": "0082919949795e697fb3bf71de9d623ccae1230d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/8f44bd3df138520497a2571db66be47c94304e02",
-                "reference": "8f44bd3df138520497a2571db66be47c94304e02",
+                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/0082919949795e697fb3bf71de9d623ccae1230d",
+                "reference": "0082919949795e697fb3bf71de9d623ccae1230d",
                 "shasum": ""
             },
             "require": {
@@ -3501,7 +3501,6 @@
                 "neos/nodetypes-html": "*",
                 "neos/nodetypes-navigation": "*"
             },
-            "default-branch": true,
             "type": "neos-site",
             "extra": {
                 "applied-flow-migrations": [
@@ -3605,7 +3604,7 @@
             "description": "Site package for the Neos Demo Site",
             "support": {
                 "issues": "https://github.com/neos/Neos.Demo/issues",
-                "source": "https://github.com/neos/Neos.Demo/tree/master"
+                "source": "https://github.com/neos/Neos.Demo/tree/update/registration"
             },
             "funding": [
                 {
@@ -3613,7 +3612,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-06-27T09:34:08+00:00"
+            "time": "2022-07-19T08:25:57+00:00"
         },
         {
             "name": "neos/diff",
@@ -4975,6 +4974,41 @@
                 }
             ],
             "time": "2022-05-10T09:39:59+00:00"
+        },
+        {
+            "name": "neos/neosdemo-userregistration",
+            "version": "dev-registration",
+            "dist": {
+                "type": "path",
+                "url": "./DistributionPackages/Neos.Demo.UserRegistration",
+                "reference": "fe0949a4ff442766b8ea9b82ae57e9f336fcb17a"
+            },
+            "require": {
+                "neos/demo": "*"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "Neos.Demo.UserRegistration",
+                    "loading-order": {
+                        "after": [
+                            "neos/demo"
+                        ]
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Neos\\Demo\\UserRegistration\\": "Classes/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "description": "Neos Demo User Registration Package",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "neos/nodetypes-assetlist",
@@ -8592,8 +8626,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "neos/neos": 20,
         "neos/demo": 20,
+        "neos/neosdemo-userregistration": 20,
         "neos/cli-setup": 20
     },
     "prefer-stable": false,
@@ -8602,5 +8636,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
