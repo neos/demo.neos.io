@@ -1,43 +1,43 @@
 {
-  "name": "neos/demo-neos-io-distribution",
-  "description" : "demo.neos.io website distribution",
-  "license": "GPL-3.0-or-later",
-  "support": {
-    "email": "hello@neos.io",
-    "slack": "http://slack.neos.io/",
-    "forum": "https://discuss.neos.io/",
-    "wiki": "https://discuss.neos.io/c/the-neos-project/project-documentation",
-    "issues": "https://github.com/neos/neos-development-collection/issues",
-    "docs": "http://neos.readthedocs.org/",
-    "source": "https://github.com/neos/neos-base-distribution"
-  },
-  "config": {
-    "vendor-dir": "Packages/Libraries",
-    "bin-dir": "bin",
-    "allow-plugins": {
-      "neos/composer-plugin": true
+    "name": "neos/demo-neos-io-distribution",
+    "description": "demo.neos.io website distribution",
+    "license": "GPL-3.0-or-later",
+    "support": {
+        "email": "hello@neos.io",
+        "slack": "http://slack.neos.io/",
+        "forum": "https://discuss.neos.io/",
+        "wiki": "https://discuss.neos.io/c/the-neos-project/project-documentation",
+        "issues": "https://github.com/neos/neos-development-collection/issues",
+        "docs": "http://neos.readthedocs.org/",
+        "source": "https://github.com/neos/neos-base-distribution"
+    },
+    "config": {
+        "vendor-dir": "Packages/Libraries",
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
+    },
+    "require": {
+        "flownative/google-cloudstorage": "^5.3",
+        "neos/cli-setup": "^8.0",
+        "neos/demo": "dev-update/registration",
+        "neos/neos": "^8.0",
+        "neos/neosdemo-userregistration": "@dev",
+        "neos/neos-ui": "^8.0",
+        "php": "^8.0"
+    },
+    "repositories": {
+        "distributionPackages": {
+            "type": "path",
+            "url": "./DistributionPackages/*"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": "./flow welcome",
+        "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
     }
-  },
-  "require": {
-    "php": "^8.0",
-    "neos/neos": "^8.0",
-    "neos/demo": "dev-update/registration",
-    "neos/neosdemo-userregistration": "@dev",
-    "neos/cli-setup": "^8.0 || dev-master",
-    "flownative/google-cloudstorage": "^5.3",
-    "neos/neos-ui": "^8.0"
-  },
-  "repositories": {
-    "distributionPackages": {
-      "type": "path",
-      "url": "./DistributionPackages/*"
-    }
-  },
-  "scripts": {
-    "post-create-project-cmd": "./flow welcome",
-    "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-    "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-    "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-    "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
-  }
 }

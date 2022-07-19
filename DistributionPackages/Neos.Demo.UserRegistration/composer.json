@@ -13,10 +13,7 @@
     },
     "extra": {
         "neos": {
-            "package-key": "Neos.Demo.UserRegistration",
-            "loading-order": {
-                "after": [ "neos/demo" ]
-            }
+            "package-key": "Neos.Demo.UserRegistration"
         }
     }
 }
