@@ -76,12 +76,13 @@ class AddUserWorkspaceAction extends AbstractAction
 
         $liveWorkspace = $this->workspaceRepository->findOneByName('live');
 
-        $privateWorkspaceNameForUser = 'private_' . $userWorkspaceName;
+        $privateWorkspaceNameForUser = 'private-' . $userWorkspaceName;
         $privateWorkspaceForUser = new Workspace(
             $privateWorkspaceNameForUser,
             $liveWorkspace,
             $user
         );
+        $privateWorkspaceForUser->setTitle('Review workspace for ' . $user->getLabel());
         $this->workspaceRepository->add($privateWorkspaceForUser);
 
         $userWorkspace = $this->workspaceRepository->findOneByName($userWorkspaceName);
