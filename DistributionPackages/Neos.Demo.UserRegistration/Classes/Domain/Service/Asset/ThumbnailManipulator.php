@@ -1,43 +1,22 @@
 <?php
-namespace Neos\Demo\UserRegistration\Domain\Service\Resource;
+namespace Neos\Demo\UserRegistration\Domain\Service\Asset;
 
 use Neos\Demo\UserRegistration\Domain\Service\User\UserRoleService;
 use Neos\Demo\UserRegistration\Resource\ResourceCollectionName;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\ResourceManagement\PersistentResource;
 use Neos\Media\Domain\Model\Thumbnail;
-use Neos\Media\Domain\Repository\AssetCollectionRepository;
-use Neos\Neos\Service\UserService;
-use Psr\Log\LoggerInterface;
 
 /**
  * @Flow\Scope("singleton")
  */
-class ResourceManipulator {
-
-    /**
-     * @Flow\Inject
-     * @var AssetCollectionRepository
-     */
-    protected $assetCollectionRepository;
+class ThumbnailManipulator {
 
     /**
      * @Flow\Inject
      * @var UserRoleService
      */
     protected $userRoleService;
-
-    /**
-     * @Flow\Inject
-     * @var UserService
-     */
-    protected $userService;
-
-    /**
-     * @Flow\Inject
-     * @var LoggerInterface
-     */
-    protected $logger;
 
     /**
      * @param Thumbnail $thumbnail
