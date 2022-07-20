@@ -16,13 +16,13 @@ namespace Neos\Demo\UserRegistration\Form\Runtime\Action;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\ActionResponse;
 use Neos\Flow\Persistence\Doctrine\PersistenceManager;
+use Neos\Fusion\Form\Runtime\Action\AbstractAction;
 use Neos\Fusion\Form\Runtime\Domain\Exception\ActionException;
 use Neos\Media\Domain\Model\AssetCollection;
 use Neos\Media\Domain\Repository\AssetCollectionRepository;
-use Neos\Neos\Domain\Model\User;
+use Neos\Neos\Domain\Exception as DomainException;
 use Neos\Neos\Domain\Service\UserService;
 use Neos\Neos\Utility\User as UserUtility;
-use Neos\Fusion\Form\Runtime\Action\AbstractAction;
 
 class AddUserAssetCollectionAction extends AbstractAction
 {
@@ -45,8 +45,7 @@ class AddUserAssetCollectionAction extends AbstractAction
     protected $persistenceManager;
 
     /**
-     * @return ActionResponse|null
-     * @throws ActionException
+     * @throws ActionException|DomainException
      */
     public function perform(): ?ActionResponse
     {
@@ -62,14 +61,9 @@ class AddUserAssetCollectionAction extends AbstractAction
     }
 
     /**
-     * Adds a workspace for the new user
-     * so that he has a sandboxed playground
-     *
-     * @param string $userWorkspaceName
-     * @param User $user
-     * @return void
+     * Adds a workspace for the new user so that he has a sandboxed playground
      */
-    protected function addAssetCollectionForUser($userWorkspaceName) {
+    protected function addAssetCollectionForUser(string $userWorkspaceName): void {
         $existingAssetCollection = $this->assetCollectionRepository->findOneByTitle($userWorkspaceName);
         if ($existingAssetCollection === null) {
             $this->assetCollectionRepository->add(new AssetCollection($userWorkspaceName));

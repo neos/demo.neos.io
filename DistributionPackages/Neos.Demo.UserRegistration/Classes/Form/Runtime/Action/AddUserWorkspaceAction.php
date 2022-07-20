@@ -17,6 +17,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\ActionResponse;
 use Neos\Flow\Persistence\Doctrine\PersistenceManager;
 use Neos\Fusion\Form\Runtime\Domain\Exception\ActionException;
+use Neos\Neos\Domain\Exception as DomainException;
 use Neos\Neos\Domain\Model\User;
 use Neos\Neos\Domain\Service\UserService;
 use Neos\Neos\Utility\User as UserUtility;
@@ -45,8 +46,7 @@ class AddUserWorkspaceAction extends AbstractAction
     protected $persistenceManager;
 
     /**
-     * @return ActionResponse|null
-     * @throws ActionException
+     * @throws ActionException|DomainException
      */
     public function perform(): ?ActionResponse
     {
@@ -64,12 +64,8 @@ class AddUserWorkspaceAction extends AbstractAction
     /**
      * Adds a workspace for the new user
      * so that he has a sandboxed playground
-     *
-     * @param string $userWorkspaceName
-     * @param User $user
-     * @return void
      */
-    protected function addWorkspaceForUser($userWorkspaceName, User $user)
+    protected function addWorkspaceForUser($userWorkspaceName, User $user): void
     {
         //create private user workspace
         //@see Neos\Neos\Ui\Controller\BackendServiceController->changeBaseWorkspace()

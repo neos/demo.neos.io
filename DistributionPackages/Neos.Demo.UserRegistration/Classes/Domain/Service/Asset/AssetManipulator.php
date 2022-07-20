@@ -6,11 +6,8 @@ use Neos\Demo\UserRegistration\Domain\Service\User\UserRoleService;
 use Neos\Flow\Annotations as Flow;
 use Neos\Media\Domain\Model\Asset;
 use Neos\Media\Domain\Model\AssetCollection;
-use Neos\Media\Domain\Model\AssetInterface;
-use Neos\Media\Domain\Model\Thumbnail;
 use Neos\Media\Domain\Repository\AssetCollectionRepository;
 use Neos\Neos\Service\UserService;
-use Neos\Flow\Security\Policy\PolicyService;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -42,29 +39,18 @@ class AssetManipulator {
      */
     protected $logger;
 
-    /**
-     * @param Asset $asset
-     * @param NodeInterface $node
-     * @param string $propertyName
-     * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
-     */
-    public function assetUploaded(Asset $asset, NodeInterface $node, string $propertyName) {
+    public function assetUploaded(Asset $asset, NodeInterface $node, string $propertyName): void {
         $this->addAssetCollectionToAsset($asset);
     }
 
-    /**
-     * @param AssetInterface $asset
-     */
-    public function assetCreated(AssetInterface $asset) {
+    public function assetCreated(Asset $asset): void {
         $this->addAssetCollectionToAsset($asset);
     }
 
     /**
      * Generic method for adding the collection to the asset.
-     *
-     * @param mixed $asset
      */
-    protected function addAssetCollectionToAsset($asset)
+    protected function addAssetCollectionToAsset(Asset $asset): void
     {
         if ($this->userRoleService->isRestrictedEditor() === false) {
             return;
@@ -75,7 +61,6 @@ class AssetManipulator {
             $this->logger->debug("No asset collection found with the title " . $userAssetCollectionName);
             $userAssetCollection = new AssetCollection($userAssetCollectionName);
         }
-        /* @var $existingAssetCollections \Doctrine\Common\Collections\Collection */
         $assetCollections = $asset->getAssetCollections();
         if($assetCollections->contains($userAssetCollectionName) === true) {
             return;

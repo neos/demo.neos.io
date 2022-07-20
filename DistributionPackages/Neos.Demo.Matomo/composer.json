@@ -1,7 +1,8 @@
 {
     "description": "Neos Demo Matomo Package",
-    "name": "neos/neosdemo-matomo",
+    "name": "neosdemo/matomo",
     "type": "neos-package",
+    "version": "1.0.0",
     "license": "GPL-3.0+",
     "require": {
         "flowpack/neos-matomo": "^3.5"
@@ -13,12 +14,7 @@
     },
     "extra": {
         "neos": {
-            "package-key": "Neos.Demo.Matomo",
-            "loading-order": {
-                "after": [
-                    "flowpack/neos-matomo"
-                ]
-            }
+            "package-key": "Neos.Demo.Matomo"
         }
     }
 }

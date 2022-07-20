@@ -33,21 +33,16 @@ class AssetWithoutAssetCollectionOrTitledConditionGenerator implements SqlGenera
      */
     protected $collectionTitle;
 
-    /**
-     * @param string $collectionTitle
-     */
-    public function __construct($collectionTitle)
+    public function __construct(string $collectionTitle)
     {
         $this->collectionTitle = $collectionTitle;
     }
 
     /**
-     * @param DoctrineSqlFilter $sqlFilter
      * @param ClassMetadata $targetEntity Metadata object for the target entity to create the constraint for
      * @param string $targetTableAlias The target table alias used in the current query
-     * @return string
      */
-    public function getSql(DoctrineSqlFilter $sqlFilter, ClassMetadata $targetEntity, $targetTableAlias)
+    public function getSql(DoctrineSqlFilter $sqlFilter, ClassMetadata $targetEntity, $targetTableAlias): string
     {
         $propertyConditionGenerator = new PropertyConditionGenerator('');
         $collectionTitle = $propertyConditionGenerator->getValueForOperand($this->collectionTitle);

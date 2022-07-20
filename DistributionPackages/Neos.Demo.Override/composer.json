@@ -1,0 +1,21 @@
+{
+    "description": "Neos Demo Override Package",
+    "name": "neosdemo/override",
+    "type": "neos-package",
+    "license": "GPL-3.0+",
+    "version": "1.0.0",
+    "require": {
+        "neos/demo": "*",
+        "flowpack/media-ui": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neos\\Demo\\Override\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Neos.Demo.Override"
+        }
+    }
+}

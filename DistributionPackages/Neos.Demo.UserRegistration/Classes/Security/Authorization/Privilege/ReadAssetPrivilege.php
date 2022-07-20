@@ -20,17 +20,13 @@ class ReadAssetPrivilege extends MediaReadAssetPrivilege
 {
     /**
      * @param string $entityType
-     * @return boolean
      */
-    public function matchesEntityType($entityType)
+    public function matchesEntityType($entityType): bool
     {
         return $entityType === Asset::class;
     }
 
-    /**
-     * @return AssetConditionGenerator
-     */
-    protected function getConditionGenerator()
+    protected function getConditionGenerator(): AssetConditionGenerator
     {
         return new AssetConditionGenerator();
     }

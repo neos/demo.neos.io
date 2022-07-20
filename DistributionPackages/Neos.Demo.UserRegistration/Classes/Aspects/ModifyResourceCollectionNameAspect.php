@@ -4,7 +4,7 @@ namespace Neos\Demo\UserRegistration\Aspects;
 use Neos\Demo\UserRegistration\Domain\Service\User\UserRoleService;
 use Neos\Demo\UserRegistration\Resource\ResourceCollectionName;
 use Neos\Flow\Annotations as Flow;
-use Neos\Http\Factories\FlowUploadedFile;
+use Neos\Flow\AOP\JoinPointInterface;
 
 /**
  *
@@ -20,11 +20,9 @@ class ModifyResourceCollectionNameAspect {
 
     /**
      * @Flow\Before("method(Neos\Flow\ResourceManagement\ResourceManager->import.*())")
-     * @return void
      */
-    public function modifyCollectionNameBasedOnRole(\Neos\Flow\AOP\JoinPointInterface $joinPoint) {
+    public function modifyCollectionNameBasedOnRole(JoinPointInterface $joinPoint): void {
         if ($this->userRoleService->isRestrictedEditor()) {
-            $collectionName = $joinPoint->getMethodArgument('collectionName');
             $collectionName = ResourceCollectionName::PROTECTED_RESOURCES_COLLECTION_NAME;
             $joinPoint->setMethodArgument('collectionName', $collectionName);
         }
