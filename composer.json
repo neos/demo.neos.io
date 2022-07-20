@@ -31,13 +31,15 @@
         "neos/neos-ui": "^8.0",
         "neosdemo/userregistration": "^1.0",
         "neosdemo/matomo": "^1.0",
-        "neosdemo/override": "^1.0",
-        "flowpack/media-ui": "^0.9"
+        "neosdemo/override": "^1.0"
     },
     "repositories": {
         "distributionPackages": {
             "type": "path",
-            "url": "./DistributionPackages/*"
+            "url": "./DistributionPackages/*",
+            "options": {
+                "reference": "none"
+            }
         },
         "privateResources": {
             "type": "vcs",

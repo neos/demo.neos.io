@@ -1,0 +1,11 @@
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Neos.Demo.Override:
+            - Main
+    fusion:
+      autoInclude:
+        Neos.Demo.Override: true
+
