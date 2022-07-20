@@ -8,17 +8,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Neos\\Demo\\UserRegistration\\": "Classes/"
+            "Neos\\Demo\\Matomo\\": "Classes/"
         }
     },
     "extra": {
         "neos": {
-            "package-key": "Neos.Demo.UserRegistration",
+            "package-key": "Neos.Demo.Matomo",
             "loading-order": {
                 "after": [
-                    "neos/demo",
-                    "wwwision/privateresources",
-                    "flowpack/media-ui"
+                    "flowpack/neos-matomo"
                 ]
             }
         }

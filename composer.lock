@@ -5018,7 +5018,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.Demo.Matomo",
-                "reference": "dbe55e642d8f502c7114146eb09dc97554b0c777"
+                "reference": "cb38bdf5644ad6ebf1ac8867c0340336e41e10a6"
             },
             "require": {
                 "flowpack/neos-matomo": "^3.5"
@@ -5026,19 +5026,17 @@
             "type": "neos-package",
             "extra": {
                 "neos": {
-                    "package-key": "Neos.Demo.UserRegistration",
+                    "package-key": "Neos.Demo.Matomo",
                     "loading-order": {
                         "after": [
-                            "neos/demo",
-                            "wwwision/privateresources",
-                            "flowpack/media-ui"
+                            "flowpack/neos-matomo"
                         ]
                     }
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Neos\\Demo\\UserRegistration\\": "Classes/"
+                    "Neos\\Demo\\Matomo\\": "Classes/"
                 }
             },
             "license": [
