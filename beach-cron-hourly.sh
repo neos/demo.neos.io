@@ -13,6 +13,8 @@ if [ "${DAY_OF_WEEK}" == "1" ] && [ "${CURRENT_HOUR}" == "03" ] ; then
   # empty all symlinks to resources and resources themselves
   rm -r /application/Web/_Resources/Persistent/
   rm -r /application/Data/Persistent/Resources/
+  rm /application/Data/Logs/Exceptions/*.txt
+  rm /application/Data/Logs/*.log
 
   # truncate tables
   mysql -Nse 'SHOW TABLES' | while read table; do mysql -e "SET FOREIGN_KEY_CHECKS=0; DROP TABLE $table; SET FOREIGN_KEY_CHECKS=0;"; done
