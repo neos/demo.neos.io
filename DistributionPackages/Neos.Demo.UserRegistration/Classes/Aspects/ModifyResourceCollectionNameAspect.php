@@ -19,11 +19,10 @@ class ModifyResourceCollectionNameAspect {
     protected $userRoleService;
 
     /**
-     * @Flow\Before("method(Neos\Flow\ResourceManagement\ResourceManager->[importResource|importResourceFromContent|importUploadedResource]())")
+     * @Flow\Before("method(Neos\Flow\ResourceManagement\ResourceManager->import.*())")
      * @return void
      */
     public function modifyCollectionNameBasedOnRole(\Neos\Flow\AOP\JoinPointInterface $joinPoint) {
-
         if ($this->userRoleService->isRestrictedEditor()) {
             $collectionName = $joinPoint->getMethodArgument('collectionName');
             $collectionName = ResourceCollectionName::PROTECTED_RESOURCES_COLLECTION_NAME;
