@@ -15,9 +15,7 @@ if [ "${DAY_OF_WEEK}" == "1" ] && [ "${CURRENT_HOUR}" == "03" ] ; then
   rm -r /application/Data/Persistent/Resources/
 
   # truncate tables
-  mysql -Nse 'SET FOREIGN_KEY_CHECKS=0'
   mysql -Nse 'SHOW TABLES' | while read table; do mysql -e "SET FOREIGN_KEY_CHECKS=0; DROP TABLE $table; SET FOREIGN_KEY_CHECKS=0;"; done
-  mysql -Nse 'SET FOREIGN_KEY_CHECKS=1'
 
   #rebuild application
   /application/flow doctrine:migrate
