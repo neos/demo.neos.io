@@ -1,0 +1,12 @@
+Flowpack:
+  Neos:
+    Matomo:
+      host: 'analytics.neos.io'
+      token_auth: '%env:MATOMO_TOKEN_AUTH%'
+      idSite:
+        demoneosio: 8
+      containerId:
+        # if you want those enabled for dev debugging,
+        # pls add a key and add no-tracking cookie so that
+        # your requests dont add up to our live-views
+        demoneosio: ''

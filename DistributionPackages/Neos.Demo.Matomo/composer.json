@@ -1,0 +1,26 @@
+{
+    "description": "Neos Demo Matomo Package",
+    "name": "neos/neosdemo-matomo",
+    "type": "neos-package",
+    "license": "GPL-3.0+",
+    "require": {
+        "flowpack/neos-matomo": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neos\\Demo\\UserRegistration\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Neos.Demo.UserRegistration",
+            "loading-order": {
+                "after": [
+                    "neos/demo",
+                    "wwwision/privateresources",
+                    "flowpack/media-ui"
+                ]
+            }
+        }
+    }
+}

@@ -30,7 +30,8 @@
         "neos/neos-ui": "^8.0",
         "wwwision/privateresources": "dev-update-8",
         "php": "8.0",
-        "flowpack/media-ui": "^0.9.1"
+        "flowpack/media-ui": "^0.9.1",
+        "neos/neosdemo-matomo": "@dev"
     },
     "repositories": {
         "distributionPackages": {
