@@ -1,4 +1,32 @@
 prototype(Neos.Demo:Content.Registration) {
+  process {
+    content >
+    content = afx`
+      <div class="form-group">
+        <Neos.Fusion.Form:FieldContainer field.name="firstName" label="First Name" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
+          <Neos.Fusion.Form:Input attributes.style="width:300px;margin-bottom:15px;" />
+        </Neos.Fusion.Form:FieldContainer>
+        <Neos.Fusion.Form:FieldContainer field.name="lastName" label="Last Name" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
+          <Neos.Fusion.Form:Input attributes.style="width:300px;margin-bottom:15px;" />
+        </Neos.Fusion.Form:FieldContainer>
+        <Neos.Fusion.Form:FieldContainer field.name="username" label="Username" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
+          <small>(lowercase letters and numbers only)</small>
+          <Neos.Fusion.Form:Input attributes.style="width:300px;margin-bottom:15px;" />
+        </Neos.Fusion.Form:FieldContainer>
+        <Neos.Fusion.Form:FieldContainer field.name="password" label="Password" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
+          <Neos.Fusion.Form:Password attributes.style="width:300px" />
+        </Neos.Fusion.Form:FieldContainer>
+        <Neos.Fusion.Form:FieldContainer field.name="company" label="" attributes.style="visibility:hidden;">
+          <Neos.Fusion.Form:Input />
+        </Neos.Fusion.Form:FieldContainer>
+      </div>
+    `
+
+    schema {
+      company =  ${Form.Schema.string().validator('StringLength', {minimum: 0, maximum: 0})}
+    }
+  }
+
   action {
     createBackendUser {
       options.roles.@process.changeRoles = ${['Neos.Neos:RestrictedEditor']}
