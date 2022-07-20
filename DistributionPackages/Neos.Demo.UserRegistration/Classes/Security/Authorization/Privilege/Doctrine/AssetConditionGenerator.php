@@ -10,8 +10,6 @@ namespace Neos\Demo\UserRegistration\Security\Authorization\Privilege\Doctrine;
  */
 
 use Neos\Flow\Security\Authorization\Privilege\Entity\Doctrine\ConditionGenerator as EntityConditionGenerator;
-use Neos\Flow\Security\Authorization\Privilege\Entity\Doctrine\PropertyConditionGenerator;
-use Neos\Flow\Security\Exception\InvalidPrivilegeException;
 use Neos\Media\Domain\Model\Asset;
 
 /**
@@ -35,11 +33,8 @@ class AssetConditionGenerator extends EntityConditionGenerator
      * This is being used for user-based collections.
      * A user should have his own collection not accessible by other users (except e.g. Administrators).
      * A rare usecase where users only work in Backend and have no access to live
-     *
-     * @param string $collectionTitle
-     * @return AssetWithoutAssetCollectionOrTitledConditionGenerator
      */
-    public function isWithoutCollectionOrOutsideOfCollection($collectionTitle)
+    public function isWithoutCollectionOrOutsideOfCollection(string $collectionTitle): AssetWithoutAssetCollectionOrTitledConditionGenerator
     {
         return new AssetWithoutAssetCollectionOrTitledConditionGenerator($collectionTitle);
     }

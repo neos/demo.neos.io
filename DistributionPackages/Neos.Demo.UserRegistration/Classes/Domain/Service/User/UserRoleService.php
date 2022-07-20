@@ -2,12 +2,9 @@
 namespace Neos\Demo\UserRegistration\Domain\Service\User;
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Property\PropertyMappingConfigurationInterface;
-use Neos\Flow\Security\Exception\NoSuchRoleException;
-use Neos\Neos\Service\UserService;
+use Neos\Flow\Security\Account;
 use Neos\Flow\Security\Policy\PolicyService;
-use Neos\Http\Factories\FlowUploadedFile;
-use Psr\Log\LoggerInterface;
+use Neos\Neos\Service\UserService;
 
 /**
  *
@@ -29,19 +26,16 @@ class UserRoleService {
 
     /**
      * checks if editor has RestrictedEditorRole
-     *
-     * @return bool
      */
-    public function isRestrictedEditor() {
+    public function isRestrictedEditor(): bool {
         $restrictedEditorRole = $this->policyService->getRole('Neos.Neos:RestrictedEditor');
         $userAccounts = $this->userService->getBackendUser()->getAccounts();
-        $isRestrictedEditor = false;
-        /* @var \Neos\Flow\Security\Account */
+        /* @var Account */
         foreach ($userAccounts as $account) {
             if ($account->hasRole($restrictedEditorRole)) {
                 return true;
             }
         }
-        return $isRestrictedEditor;
+        return false;
     }
 }

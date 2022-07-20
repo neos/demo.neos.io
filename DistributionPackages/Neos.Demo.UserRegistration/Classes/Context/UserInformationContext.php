@@ -23,7 +23,7 @@ class UserInformationContext implements CacheAwareInterface {
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
+     * @var PersistenceManagerInterface
      */
     protected $persistenceManager;
 
