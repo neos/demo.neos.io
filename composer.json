@@ -23,15 +23,16 @@
     },
     "require": {
         "flownative/google-cloudstorage": "^5.3",
+        "php": "8.0",
+        "wwwision/privateresources": "dev-update-8",
         "neos/cli-setup": "^8.0",
         "neos/demo": "dev-master",
         "neos/neos": "^8.0",
-        "neos/neosdemo-userregistration": "@dev",
         "neos/neos-ui": "^8.0",
-        "wwwision/privateresources": "dev-update-8",
-        "php": "8.0",
-        "flowpack/media-ui": "^0.9.1",
-        "neos/neosdemo-matomo": "@dev"
+        "neosdemo/userregistration": "^1.0",
+        "neosdemo/matomo": "^1.0",
+        "neosdemo/override": "^1.0",
+        "flowpack/media-ui": "^0.9"
     },
     "repositories": {
         "distributionPackages": {
