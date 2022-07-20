@@ -24,7 +24,7 @@
     "require": {
         "flownative/google-cloudstorage": "^5.3",
         "neos/cli-setup": "^8.0",
-        "neos/demo": "dev-update/registration",
+        "neos/demo": "dev-master",
         "neos/neos": "^8.0",
         "neos/neosdemo-userregistration": "@dev",
         "neos/neos-ui": "^8.0",
