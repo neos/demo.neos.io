@@ -2,11 +2,12 @@
 namespace Neos\Demo\UserRegistration\Domain\Service\Asset;
 
 use Neos\ContentRepository\Domain\Model\NodeInterface;
+use Neos\Demo\UserRegistration\Domain\Service\User\UserRoleService;
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Neos\Media\Domain\Model\Asset;
 use Neos\Media\Domain\Model\AssetCollection;
 use Neos\Media\Domain\Model\AssetInterface;
+use Neos\Media\Domain\Model\Thumbnail;
 use Neos\Media\Domain\Repository\AssetCollectionRepository;
 use Neos\Neos\Service\UserService;
 use Neos\Flow\Security\Policy\PolicyService;
@@ -31,15 +32,9 @@ class AssetManipulator {
 
     /**
      * @Flow\Inject
-     * @var PolicyService
+     * @var UserRoleService
      */
-    protected $policyService;
-
-    /**
-     * @Flow\Inject
-     * @var PersistenceManagerInterface
-     */
-    protected $persistenceManager;
+    protected $userRoleService;
 
     /**
      * @Flow\Inject
@@ -71,7 +66,7 @@ class AssetManipulator {
      */
     protected function addAssetCollectionToAsset($asset)
     {
-        if ($this->isRestrictedEditor() === false) {
+        if ($this->userRoleService->isRestrictedEditor() === false) {
             return;
         }
         $userAssetCollectionName = $this->userService->getPersonalWorkspaceName();
@@ -90,22 +85,4 @@ class AssetManipulator {
         $this->assetCollectionRepository->update($userAssetCollection);
     }
 
-
-    /**
-     * checks if editor has RestrictedEditorRole
-     *
-     * @return bool
-     */
-    protected function isRestrictedEditor() {
-        $restrictedEditorRole = $this->policyService->getRole('Neos.Neos:RestrictedEditor');
-        $userAccounts = $this->userService->getBackendUser()->getAccounts();
-        $isRestrictedEditor = false;
-        /* @var \Neos\Flow\Security\Account */
-        foreach ($userAccounts as $account) {
-            if ($account->hasRole($restrictedEditorRole)) {
-                $isRestrictedEditor = true;
-            }
-        }
-        return $isRestrictedEditor;
-    }
 }
