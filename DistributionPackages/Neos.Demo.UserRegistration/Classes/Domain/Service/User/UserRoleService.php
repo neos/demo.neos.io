@@ -34,14 +34,15 @@ class UserRoleService {
      */
     public function isRestrictedEditor() {
         $restrictedEditorRole = $this->policyService->getRole('Neos.Neos:RestrictedEditor');
-        $userAccounts = $this->userService->getBackendUser()->getAccounts();
-        $isRestrictedEditor = false;
+        $currentUser = $this->userService->getBackendUser();
+        if (!$currentUser) {
+            return false;
+        }
         /* @var \Neos\Flow\Security\Account */
-        foreach ($userAccounts as $account) {
+        foreach ($currentUser->getAccounts() as $account) {
             if ($account->hasRole($restrictedEditorRole)) {
                 return true;
             }
         }
-        return $isRestrictedEditor;
     }
 }
