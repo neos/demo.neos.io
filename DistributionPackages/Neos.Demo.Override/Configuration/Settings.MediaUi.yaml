@@ -1,0 +1,11 @@
+Neos:
+  Neos:
+    modules:
+      management:
+        submodules:
+          media:
+            enabled: false
+          history:
+            enabled: false
+          mediaui:
+            position: 'start'

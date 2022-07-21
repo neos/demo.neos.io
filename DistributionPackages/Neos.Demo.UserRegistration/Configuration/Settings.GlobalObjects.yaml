@@ -1,0 +1,5 @@
+Neos:
+  Flow:
+    aop:
+      globalObjects:
+        userAwareContext: Neos\Demo\UserRegistration\Context\UserInformationContext

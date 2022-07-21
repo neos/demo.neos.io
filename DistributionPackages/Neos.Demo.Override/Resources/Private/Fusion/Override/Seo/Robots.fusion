@@ -1,0 +1,4 @@
+prototype(Neos.Seo:RobotsTxt) {
+  data.disallowAll = 'Disallow: /'
+  data.disallowAll.@position = 'after userAgentAll'
+}

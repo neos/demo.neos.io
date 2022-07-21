@@ -1,0 +1,13 @@
+Neos:
+  Flow:
+    resource:
+      collections:
+        'protectedResources':
+          storage: 'defaultPersistentResourcesStorage'
+          target: 'protectedResourcesTarget'
+      targets:
+        'protectedResourcesTarget':
+          targetOptions:
+            privilegedRole: 'Neos.Neos:RestrictedEditor'
+            tokenLifetime: 3600
+

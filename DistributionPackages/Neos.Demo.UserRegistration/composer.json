@@ -1,0 +1,21 @@
+{
+    "description": "Neos Demo User Registration Package",
+    "name": "neosdemo/userregistration",
+    "type": "neos-package",
+    "license": "GPL-3.0+",
+    "version": "1.0.0",
+    "require": {
+        "neos/demo": "*",
+        "wwwision/privateresources": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neos\\Demo\\UserRegistration\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Neos.Demo.UserRegistration"
+        }
+    }
+}
