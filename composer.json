@@ -26,7 +26,7 @@
         "php": "8.0",
         "wwwision/privateresources": "dev-update-8",
         "neos/cli-setup": "^8.0",
-        "neos/demo": "dev-master",
+        "neos/demo": "dev-feature/new-content",
         "neos/neos": "^8.0",
         "neos/neos-ui": "^8.0",
         "neosdemo/userregistration": "^1.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "344f6cd415b73487a3c8077b6903bac0",
+    "content-hash": "af5255b4a64900aab966333da0b0a5af",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3517,16 +3517,16 @@
         },
         {
             "name": "neos/demo",
-            "version": "dev-master",
+            "version": "dev-feature/new-content",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/Neos.Demo.git",
-                "reference": "9af15d8a351adcf6f1fc347e1b0ae70d9aa3ce10"
+                "reference": "ea511ae66751d2eeb30bad98a4546c87101ec080"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/9af15d8a351adcf6f1fc347e1b0ae70d9aa3ce10",
-                "reference": "9af15d8a351adcf6f1fc347e1b0ae70d9aa3ce10",
+                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/ea511ae66751d2eeb30bad98a4546c87101ec080",
+                "reference": "ea511ae66751d2eeb30bad98a4546c87101ec080",
                 "shasum": ""
             },
             "require": {
@@ -3538,7 +3538,6 @@
                 "neos/nodetypes-html": "^8.0 || dev-master",
                 "neos/nodetypes-navigation": "^8.0 || dev-master"
             },
-            "default-branch": true,
             "type": "neos-site",
             "extra": {
                 "applied-flow-migrations": [
@@ -3642,7 +3641,7 @@
             "description": "Site package for the Neos Demo Site",
             "support": {
                 "issues": "https://github.com/neos/Neos.Demo/issues",
-                "source": "https://github.com/neos/Neos.Demo/tree/master"
+                "source": "https://github.com/neos/Neos.Demo/tree/feature/new-content"
             },
             "funding": [
                 {
@@ -3650,7 +3649,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-07-20T13:17:34+00:00"
+            "time": "2022-07-21T07:23:03+00:00"
         },
         {
             "name": "neos/diff",
