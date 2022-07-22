@@ -1,3 +1,7 @@
+Wwwision:
+  PrivateResources:
+    middleware:
+      controllerObjectName: 'Neos\Neos\Controller\Backend\BackendController'
 Neos:
   Flow:
     resource:
@@ -10,4 +14,3 @@ Neos:
           targetOptions:
             privilegedRole: 'Neos.Neos:RestrictedEditor'
             tokenLifetime: 3600
-
