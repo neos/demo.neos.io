@@ -1,0 +1,6 @@
+prototype(Neos.Demo:Section.Header) {
+    logo.@process.override = Neos.Neos:ImageTag {
+        asset = ${q(site).property('logo')}
+        @if.set = ${q(site).property('logo')}
+    }
+}
