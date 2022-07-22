@@ -10,3 +10,11 @@ Flowpack:
         # pls add a key and add no-tracking cookie so that
         # your requests dont add up to our live-views
         demoneosio: ''
+Neos:
+  Neos:
+    modules:
+      seo:
+        enabled: false
+        submodules:
+          matomo:
+            enabled: false
