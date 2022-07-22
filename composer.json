@@ -24,7 +24,7 @@
     "require": {
         "flownative/google-cloudstorage": "^5.3",
         "php": "8.0",
-        "wwwision/privateresources": "dev-update-8",
+        "wwwision/privateresources": "^6.2",
         "neos/cli-setup": "^8.0",
         "neos/demo": "dev-feature/new-content",
         "neos/neos": "^8.0",
@@ -40,10 +40,6 @@
             "options": {
                 "reference": "none"
             }
-        },
-        "privateResources": {
-            "type": "vcs",
-            "url": "git@github.com:regniets/Wwwision.PrivateResources.git"
         }
     },
     "scripts": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af5255b4a64900aab966333da0b0a5af",
+    "content-hash": "4044f77542ce13c0ac6d910ada95e326",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -9098,20 +9098,20 @@
         },
         {
             "name": "wwwision/privateresources",
-            "version": "dev-update-8",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/regniets/Wwwision.PrivateResources.git",
-                "reference": "27e28412c0b7a7837896337f615da1a2420af2f3"
+                "url": "https://github.com/bwaidelich/Wwwision.PrivateResources.git",
+                "reference": "d6d9c31349f758fd9fe3e4c32193723fd511fae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/regniets/Wwwision.PrivateResources/zipball/27e28412c0b7a7837896337f615da1a2420af2f3",
-                "reference": "27e28412c0b7a7837896337f615da1a2420af2f3",
+                "url": "https://api.github.com/repos/bwaidelich/Wwwision.PrivateResources/zipball/d6d9c31349f758fd9fe3e4c32193723fd511fae3",
+                "reference": "d6d9c31349f758fd9fe3e4c32193723fd511fae3",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/psr7": "^1.6",
+                "guzzlehttp/psr7": "^1.6 || ^2.0",
                 "neos/flow": "^7.0 || ^8.0"
             },
             "type": "neos-package",
@@ -9120,31 +9120,32 @@
                     "Wwwision\\PrivateResources\\": "Classes"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "A Flow package that allows for protecting persistent resources from unauthorized access",
             "support": {
-                "source": "https://github.com/regniets/Wwwision.PrivateResources/tree/update-8"
+                "issues": "https://github.com/bwaidelich/Wwwision.PrivateResources/issues",
+                "source": "https://github.com/bwaidelich/Wwwision.PrivateResources/tree/v6.2.0"
             },
             "funding": [
                 {
-                    "type": "github",
-                    "url": "https://github.com/bwaidelich"
+                    "url": "https://www.paypal.me/bwaidelich",
+                    "type": "custom"
                 },
                 {
-                    "type": "custom",
-                    "url": "https://www.paypal.me/bwaidelich"
+                    "url": "https://github.com/bwaidelich",
+                    "type": "github"
                 }
             ],
-            "time": "2022-07-19T14:52:50+00:00"
+            "time": "2022-07-21T12:45:31+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wwwision/privateresources": 20,
         "neos/demo": 20
     },
     "prefer-stable": false,
