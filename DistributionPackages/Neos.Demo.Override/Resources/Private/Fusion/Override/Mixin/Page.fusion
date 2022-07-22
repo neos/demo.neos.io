@@ -1,0 +1,8 @@
+prototype(Neos.Demo:Mixin.Page) {
+    style {
+        '--color-light' = ${String.pregReplace(q(site).property('lightColor'), "/.*?(\d*),(\d*),(\d*).*/", '$1 $2 $3')}
+        '--color-light'.@if.set = ${q(site).property('lightColor')}
+        '--color-dark' = ${String.pregReplace(q(site).property('darkColor'), "/.*?(\d*),(\d*),(\d*).*/", '$1 $2 $3')}
+        '--color-dark'.@if.set = ${q(site).property('darkColor')}
+    }
+}

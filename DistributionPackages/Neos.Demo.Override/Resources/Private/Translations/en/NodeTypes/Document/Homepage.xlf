@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Neos.Demo" source-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="groups.personalization" xml:space="preserve">
+				<source>Personalization</source>
+			</trans-unit>
+			<trans-unit id="properties.logo" xml:space="preserve">
+				<source>Custom logo</source>
+			</trans-unit>
+			<trans-unit id="properties.lightColor" xml:space="preserve">
+				<source>Custom light color</source>
+			</trans-unit>
+			<trans-unit id="properties.darkColor" xml:space="preserve">
+				<source>Custom dark color</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
