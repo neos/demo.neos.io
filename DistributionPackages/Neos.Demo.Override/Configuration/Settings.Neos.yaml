@@ -5,6 +5,7 @@ Neos:
         autoInclude:
           Neos.Demo.Override:
             - Main
+            - NodeTypes/*
     fusion:
       autoInclude:
         Neos.Demo.Override: true

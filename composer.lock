@@ -3521,12 +3521,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/Neos.Demo.git",
-                "reference": "ea511ae66751d2eeb30bad98a4546c87101ec080"
+                "reference": "d078a2d2418f113aba9663f309e61b4ce4333205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/ea511ae66751d2eeb30bad98a4546c87101ec080",
-                "reference": "ea511ae66751d2eeb30bad98a4546c87101ec080",
+                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/d078a2d2418f113aba9663f309e61b4ce4333205",
+                "reference": "d078a2d2418f113aba9663f309e61b4ce4333205",
                 "shasum": ""
             },
             "require": {
@@ -3537,6 +3537,10 @@
                 "neos/nodetypes-contentreferences": "^8.0 || dev-master",
                 "neos/nodetypes-html": "^8.0 || dev-master",
                 "neos/nodetypes-navigation": "^8.0 || dev-master"
+            },
+            "suggest": {
+                "sitegeist/monocle": "An living-styleguide for Neos that is based on the actual fusion-code",
+                "yoast/yoast-seo-for-neos": "Yoast SEO for Neos CMS"
             },
             "type": "neos-site",
             "extra": {
@@ -3649,7 +3653,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-07-21T07:23:03+00:00"
+            "time": "2022-07-22T13:32:56+00:00"
         },
         {
             "name": "neos/diff",
