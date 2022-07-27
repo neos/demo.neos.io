@@ -3,18 +3,18 @@ prototype(Neos.Demo:Content.Registration) {
     content >
     content = afx`
       <fieldset class="space-y-6 mb-8 max-w-[300px]">
-        <Neos.Fusion.Form:FieldContainer field.name="firstName" label="First Name">
-          <Neos.Fusion.Form:Input />
+        <Neos.Fusion.Form:FieldContainer field.name="firstName" label="First Name" >
+          <Neos.Fusion.Form:Input attributes.required={true} />
         </Neos.Fusion.Form:FieldContainer>
         <Neos.Fusion.Form:FieldContainer field.name="lastName" label="Last Name">
-          <Neos.Fusion.Form:Input />
+          <Neos.Fusion.Form:Input attributes.required={true} />
         </Neos.Fusion.Form:FieldContainer>
         <Neos.Fusion.Form:FieldContainer field.name="username" label="Username">
-            <Neos.Fusion.Form:Input />
+            <Neos.Fusion.Form:Input attributes.required={true} />
             <small>(lowercase letters and numbers only)</small>
         </Neos.Fusion.Form:FieldContainer>
         <Neos.Fusion.Form:FieldContainer field.name="password" label="Password">
-          <Neos.Fusion.Form:Password />
+          <Neos.Fusion.Form:Password attributes.required={true} />
         </Neos.Fusion.Form:FieldContainer>
         <Neos.Fusion.Form:FieldContainer field.name="company" label="" class="hidden">
           <Neos.Fusion.Form:Input />
