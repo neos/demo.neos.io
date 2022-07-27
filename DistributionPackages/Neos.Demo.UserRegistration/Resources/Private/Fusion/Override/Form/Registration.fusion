@@ -10,7 +10,7 @@ prototype(Neos.Demo:Content.Registration) {
           <Neos.Fusion.Form:Input attributes.required={true} />
         </Neos.Fusion.Form:FieldContainer>
         <Neos.Fusion.Form:FieldContainer field.name="username" label="Username">
-            <Neos.Fusion.Form:Input attributes.required={true} />
+            <Neos.Fusion.Form:Input attributes.required={true} attributes.pattern="[a-z0-9]+" />
             <small>(lowercase letters and numbers only)</small>
         </Neos.Fusion.Form:FieldContainer>
         <Neos.Fusion.Form:FieldContainer field.name="password" label="Password">
