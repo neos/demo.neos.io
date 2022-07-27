@@ -13,6 +13,10 @@ fi
 
 # Setup caches
 /application/flow flow:cache:setupall
+# Remove current site and re-add it. This can be an issue for all current users
+# but is needed when we change content.
+/application/flow site:prune --site-node=neosdemo
+/application/flow site:import --package-key=Neos.Demo
 # Flush the content cache on each deployment
 /application/flow flow:cache:flush Neos_Fusion_Content
 
