@@ -3521,12 +3521,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/Neos.Demo.git",
-                "reference": "d078a2d2418f113aba9663f309e61b4ce4333205"
+                "reference": "0a78b33a51795e00748880edf5c1c716524aef7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/d078a2d2418f113aba9663f309e61b4ce4333205",
-                "reference": "d078a2d2418f113aba9663f309e61b4ce4333205",
+                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/0a78b33a51795e00748880edf5c1c716524aef7c",
+                "reference": "0a78b33a51795e00748880edf5c1c716524aef7c",
                 "shasum": ""
             },
             "require": {
@@ -3653,7 +3653,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-07-22T13:32:56+00:00"
+            "time": "2022-07-27T13:25:36+00:00"
         },
         {
             "name": "neos/diff",
