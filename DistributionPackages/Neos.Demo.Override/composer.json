@@ -8,6 +8,7 @@
         "neos/demo": "*",
         "neos/seo": "^3.1",
         "flowpack/media-ui": "^0.9",
+        "flowpack/cachebuster": "^1.2",
         "shel/neos-colorpicker": "^1.5"
     },
     "autoload": {

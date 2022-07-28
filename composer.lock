@@ -2019,6 +2019,46 @@
             "time": "2022-05-24T15:45:57+00:00"
         },
         {
+            "name": "flowpack/cachebuster",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Flowpack/Flowpack.CacheBuster.git",
+                "reference": "e3cf2f913406ff8219b248c0fbaee808b447d6cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.CacheBuster/zipball/e3cf2f913406ff8219b248c0fbaee808b447d6cb",
+                "reference": "e3cf2f913406ff8219b248c0fbaee808b447d6cb",
+                "shasum": ""
+            },
+            "require": {
+                "neos/flow": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0"
+            },
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Flowpack\\CacheBuster\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Helzle",
+                    "email": "sebastian@helzle.it"
+                }
+            ],
+            "description": "Cache buster for static resources in Neos",
+            "support": {
+                "issues": "https://github.com/Flowpack/Flowpack.CacheBuster/issues",
+                "source": "https://github.com/Flowpack/Flowpack.CacheBuster/tree/1.2.0"
+            },
+            "time": "2022-03-28T21:32:22+00:00"
+        },
+        {
             "name": "flowpack/media-ui",
             "version": "0.9.1",
             "source": {
@@ -6417,6 +6457,7 @@
                 "url": "./DistributionPackages/Neos.Demo.Override"
             },
             "require": {
+                "flowpack/cachebuster": "^1.2",
                 "flowpack/media-ui": "^0.9",
                 "neos/demo": "*",
                 "neos/seo": "^3.1",
