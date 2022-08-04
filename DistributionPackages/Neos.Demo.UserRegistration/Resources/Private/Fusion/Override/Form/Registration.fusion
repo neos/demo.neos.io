@@ -1,51 +1,38 @@
 prototype(Neos.Demo:Content.Registration) {
-  process {
-    content >
-    content = afx`
-      <fieldset class="space-y-6 mb-8 max-w-[300px]">
-        <Neos.Fusion.Form:FieldContainer field.name="firstName" label="First Name" >
-          <Neos.Fusion.Form:Input attributes.required={true} />
-        </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="lastName" label="Last Name">
-          <Neos.Fusion.Form:Input attributes.required={true} />
-        </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="username" label="Username">
-            <Neos.Fusion.Form:Input attributes.required={true} attributes.pattern="[a-z0-9]+" />
-            <small>(lowercase letters and numbers only)</small>
-        </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="password" label="Password">
-          <Neos.Fusion.Form:Password attributes.required={true} />
-        </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="company" label="" attributes.style="visibility:hidden;height:0;margin:0">
-          <Neos.Fusion.Form:Input attributes.class="p-0 text-sm" />
-        </Neos.Fusion.Form:FieldContainer>
-      </fieldset>
-    `
+    process {
+        content.content.@process.appendHoneypot = afx`
+            {value}
+            <Neos.Fusion.Form:FieldContainer field.name="company" label=""
+                                             attributes.style="visibility:hidden;height:0;margin:0">
+                <Neos.Fusion.Form:Input attributes.class="p-0 text-sm"/>
+            </Neos.Fusion.Form:FieldContainer>
+        `
 
-    schema {
-      company =  ${Form.Schema.string().validator('StringLength', {minimum: 0, maximum: 0})}
-    }
-  }
-
-  action {
-    createBackendUser {
-      options.roles.@process.changeRoles = ${['Neos.Neos:RestrictedEditor']}
+        schema {
+            // Honeypot
+            company = ${Form.Schema.string().validator('StringLength', {minimum: 0, maximum: 0})}
+        }
     }
 
-    addUserWorkspace {
-      type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserWorkspace'
-      options {
-        username = ${data.username}
-      }
-      @position = 'after createBackendUser'
-    }
+    action {
+        createBackendUser {
+            options.roles.@process.changeRoles = ${['Neos.Neos:RestrictedEditor']}
+        }
 
-    addUserAssetCollection {
-      type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserAssetCollection'
-      options {
-        username = ${data.username}
-      }
-      @position = 'after addUserWorkspace'
+        addUserWorkspace {
+            type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserWorkspace'
+            options {
+                username = ${data.username}
+            }
+            @position = 'after createBackendUser'
+        }
+
+        addUserAssetCollection {
+            type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserAssetCollection'
+            options {
+                username = ${data.username}
+            }
+            @position = 'after addUserWorkspace'
+        }
     }
-  }
 }
