@@ -26,23 +26,14 @@ use Neos\Neos\Utility\User as UserUtility;
 
 class AddUserAssetCollectionAction extends AbstractAction
 {
-    /**
-     * @Flow\Inject
-     * @var UserService
-     */
-    protected $userService;
+    #[Flow\Inject]
+    protected ?UserService $userService;
 
-    /**
-     * @Flow\Inject
-     * @var AssetCollectionRepository
-     */
-    protected $assetCollectionRepository;
+    #[Flow\Inject]
+    protected ?AssetCollectionRepository $assetCollectionRepository;
 
-    /**
-     * @Flow\Inject
-     * @var PersistenceManager
-     */
-    protected $persistenceManager;
+    #[Flow\Inject]
+    protected ?PersistenceManager $persistenceManager;
 
     /**
      * @throws ActionException|DomainException

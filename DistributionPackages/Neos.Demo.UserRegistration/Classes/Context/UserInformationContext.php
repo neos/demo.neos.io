@@ -15,21 +15,13 @@ use Neos\Flow\Annotations as Flow;
  * @Flow\Scope("singleton")
  */
 class UserInformationContext implements CacheAwareInterface {
-    /**
-     * @Flow\Inject
-     * @var Context
-     */
-    protected $securityContext;
 
-    /**
-     * @Flow\Inject
-     * @var PersistenceManagerInterface
-     */
-    protected $persistenceManager;
+    #[Flow\Inject]
+    protected ?Context $securityContext;
 
-    /**
-     * @return string
-     */
+    #[Flow\Inject]
+    protected ?PersistenceManagerInterface $persistenceManager;
+
     public function getCacheEntryIdentifier(): string {
         if ($this->securityContext->getAccount() !== null) {
             return $this->securityContext->getAccount()->getAccountIdentifier();

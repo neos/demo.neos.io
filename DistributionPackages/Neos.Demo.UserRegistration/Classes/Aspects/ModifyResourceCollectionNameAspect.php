@@ -12,11 +12,8 @@ use Neos\Flow\AOP\JoinPointInterface;
  */
 class ModifyResourceCollectionNameAspect {
 
-    /**
-     * @Flow\Inject
-     * @var UserRoleService
-     */
-    protected $userRoleService;
+    #[Flow\Inject]
+    protected ?UserRoleService $userRoleService;
 
     /**
      * @Flow\Before("method(Neos\Flow\ResourceManagement\ResourceManager->import.*())")

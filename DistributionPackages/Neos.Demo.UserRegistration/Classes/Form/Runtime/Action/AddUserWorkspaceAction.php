@@ -27,23 +27,14 @@ use Neos\ContentRepository\Domain\Model\Workspace;
 
 class AddUserWorkspaceAction extends AbstractAction
 {
-    /**
-     * @Flow\Inject
-     * @var UserService
-     */
-    protected $userService;
+    #[Flow\Inject]
+    protected ?UserService $userService;
 
-    /**
-     * @Flow\Inject
-     * @var WorkspaceRepository
-     */
-    protected $workspaceRepository;
+    #[Flow\Inject]
+    protected ?WorkspaceRepository $workspaceRepository;
 
-    /**
-     * @Flow\Inject
-     * @var PersistenceManager
-     */
-    protected $persistenceManager;
+    #[Flow\Inject]
+    protected ?PersistenceManager $persistenceManager;
 
     /**
      * @throws ActionException|DomainException
@@ -56,8 +47,12 @@ class AddUserWorkspaceAction extends AbstractAction
             throw new ActionException('User not found, cannot add workspace.');
         }
         $userWorkspaceName = UserUtility::getPersonalWorkspaceNameForUsername($accountIdentifier);
-        $this->addWorkspaceForUser($userWorkspaceName, $existingUser);
-        $this->persistenceManager->persistAll();
+        $privateWorkspaceForUser = $this->workspaceRepository->findOneByName('private-' . $userWorkspaceName);
+
+        if (!$privateWorkspaceForUser) {
+            $this->addWorkspaceForUser($userWorkspaceName, $existingUser);
+            $this->persistenceManager->persistAll();
+        }
         return null;
     }
 
@@ -65,11 +60,10 @@ class AddUserWorkspaceAction extends AbstractAction
      * Adds a workspace for the new user
      * so that he has a sandboxed playground
      */
-    protected function addWorkspaceForUser($userWorkspaceName, User $user): void
+    protected function addWorkspaceForUser(string $userWorkspaceName, User $user): void
     {
         //create private user workspace
         //@see Neos\Neos\Ui\Controller\BackendServiceController->changeBaseWorkspace()
-
         $liveWorkspace = $this->workspaceRepository->findOneByName('live');
 
         $privateWorkspaceNameForUser = 'private-' . $userWorkspaceName;

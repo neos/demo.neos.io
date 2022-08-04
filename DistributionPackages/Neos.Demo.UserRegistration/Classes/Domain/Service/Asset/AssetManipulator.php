@@ -10,34 +10,20 @@ use Neos\Media\Domain\Repository\AssetCollectionRepository;
 use Neos\Neos\Service\UserService;
 use Psr\Log\LoggerInterface;
 
-/**
- * @Flow\Scope("singleton")
- */
+#[Flow\Scope("singleton")]
 class AssetManipulator {
 
-    /**
-     * @Flow\Inject
-     * @var AssetCollectionRepository
-     */
-    protected $assetCollectionRepository;
+    #[Flow\Inject]
+    protected ?AssetCollectionRepository $assetCollectionRepository;
 
-    /**
-     * @Flow\Inject
-     * @var UserService
-     */
-    protected $userService;
+    #[Flow\Inject]
+    protected ?UserService $userService;
 
-    /**
-     * @Flow\Inject
-     * @var UserRoleService
-     */
-    protected $userRoleService;
+    #[Flow\Inject]
+    protected ?UserRoleService $userRoleService;
 
-    /**
-     * @Flow\Inject
-     * @var LoggerInterface
-     */
-    protected $logger;
+    #[Flow\Inject]
+    protected ?LoggerInterface $logger;
 
     public function assetUploaded(Asset $asset, NodeInterface $node, string $propertyName): void {
         $this->addAssetCollectionToAsset($asset);

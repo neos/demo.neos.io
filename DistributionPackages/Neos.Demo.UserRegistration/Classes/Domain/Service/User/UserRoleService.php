@@ -2,27 +2,17 @@
 namespace Neos\Demo\UserRegistration\Domain\Service\User;
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Security\Account;
 use Neos\Flow\Security\Policy\PolicyService;
 use Neos\Neos\Service\UserService;
 
-/**
- *
- * @Flow\Scope("singleton")
- */
+#[Flow\Scope("singleton")]
 class UserRoleService {
 
-    /**
-     * @Flow\Inject
-     * @var UserService
-     */
-    protected $userService;
+    #[Flow\Inject]
+    protected ?UserService $userService;
 
-    /**
-     * @Flow\Inject
-     * @var PolicyService
-     */
-    protected $policyService;
+    #[Flow\Inject]
+    protected ?PolicyService $policyService;
 
     /**
      * checks if editor has RestrictedEditorRole
@@ -33,7 +23,6 @@ class UserRoleService {
         if (!$currentUser) {
             return false;
         }
-        /* @var Account */
         foreach ($currentUser->getAccounts() as $account) {
             if ($account->hasRole($restrictedEditorRole)) {
                 return true;
