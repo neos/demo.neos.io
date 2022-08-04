@@ -2,24 +2,24 @@ prototype(Neos.Demo:Content.Registration) {
   process {
     content >
     content = afx`
-      <div class="form-group">
-        <Neos.Fusion.Form:FieldContainer field.name="firstName" label="First Name" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
-          <Neos.Fusion.Form:Input attributes.style="width:300px;margin-bottom:15px;" />
+      <fieldset class="space-y-6 mb-8 max-w-[300px]">
+        <Neos.Fusion.Form:FieldContainer field.name="firstName" label="First Name" >
+          <Neos.Fusion.Form:Input attributes.required={true} />
         </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="lastName" label="Last Name" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
-          <Neos.Fusion.Form:Input attributes.style="width:300px;margin-bottom:15px;" />
+        <Neos.Fusion.Form:FieldContainer field.name="lastName" label="Last Name">
+          <Neos.Fusion.Form:Input attributes.required={true} />
         </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="username" label="Username" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
-          <small>(lowercase letters and numbers only)</small>
-          <Neos.Fusion.Form:Input attributes.style="width:300px;margin-bottom:15px;" />
+        <Neos.Fusion.Form:FieldContainer field.name="username" label="Username">
+            <Neos.Fusion.Form:Input attributes.required={true} attributes.pattern="[a-z0-9]+" />
+            <small>(lowercase letters and numbers only)</small>
         </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="password" label="Password" attributes.style="display:flex;flex-direction:column;justify-content:space-between;">
-          <Neos.Fusion.Form:Password attributes.style="width:300px" />
+        <Neos.Fusion.Form:FieldContainer field.name="password" label="Password">
+          <Neos.Fusion.Form:Password attributes.required={true} />
         </Neos.Fusion.Form:FieldContainer>
-        <Neos.Fusion.Form:FieldContainer field.name="company" label="" attributes.style="visibility:hidden;">
-          <Neos.Fusion.Form:Input />
+        <Neos.Fusion.Form:FieldContainer field.name="company" label="" attributes.style="visibility:hidden;height:0;margin:0">
+          <Neos.Fusion.Form:Input attributes.class="p-0 text-sm" />
         </Neos.Fusion.Form:FieldContainer>
-      </div>
+      </fieldset>
     `
 
     schema {
