@@ -3707,16 +3707,16 @@
         },
         {
             "name": "neos/demo",
-            "version": "8.3.3",
+            "version": "8.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/Neos.Demo.git",
-                "reference": "ac9089a380c4ccf98ec87db800dce5a4b6d9e5c9"
+                "reference": "6b8aa2330e92b38c9764135ad724839f0e84699f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/ac9089a380c4ccf98ec87db800dce5a4b6d9e5c9",
-                "reference": "ac9089a380c4ccf98ec87db800dce5a4b6d9e5c9",
+                "url": "https://api.github.com/repos/neos/Neos.Demo/zipball/6b8aa2330e92b38c9764135ad724839f0e84699f",
+                "reference": "6b8aa2330e92b38c9764135ad724839f0e84699f",
                 "shasum": ""
             },
             "require": {
@@ -3835,7 +3835,7 @@
             "description": "Site package for the Neos Demo Site",
             "support": {
                 "issues": "https://github.com/neos/Neos.Demo/issues",
-                "source": "https://github.com/neos/Neos.Demo/tree/8.3.3"
+                "source": "https://github.com/neos/Neos.Demo/tree/8.3.4"
             },
             "funding": [
                 {
@@ -3843,7 +3843,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-05-03T08:54:49+00:00"
+            "time": "2023-05-04T11:48:02+00:00"
         },
         {
             "name": "neos/diff",
