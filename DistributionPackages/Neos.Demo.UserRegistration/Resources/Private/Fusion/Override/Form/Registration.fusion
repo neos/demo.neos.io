@@ -1,38 +1,42 @@
 prototype(Neos.Demo:Content.Registration) {
-    process {
-        content.content.@process.appendHoneypot = afx`
-            {value}
-            <Neos.Fusion.Form:FieldContainer field.name="company" label=""
-                                             attributes.style="visibility:hidden;height:0;margin:0">
-                <Neos.Fusion.Form:Input attributes.class="p-0 text-sm"/>
-            </Neos.Fusion.Form:FieldContainer>
-        `
 
-        schema {
-            // Honeypot
-            company = ${Form.Schema.string().validator('StringLength', {minimum: 0, maximum: 0})}
-        }
-    }
+    renderer >
+    renderer {
+        process {
+            content.content.@process.appendHoneypot = afx`
+                {value}
+                <Neos.Fusion.Form:FieldContainer field.name="company" label=""
+                                                 attributes.style="visibility:hidden;height:0;margin:0">
+                    <Neos.Fusion.Form:Input attributes.class="p-0 text-sm"/>
+                </Neos.Fusion.Form:FieldContainer>
+            `
 
-    action {
-        createBackendUser {
-            options.roles.@process.changeRoles = ${['Neos.Neos:RestrictedEditor']}
-        }
-
-        addUserWorkspace {
-            type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserWorkspace'
-            options {
-                username = ${data.username}
+            schema {
+                // Honeypot
+                company = ${Form.Schema.string().validator('StringLength', {minimum: 0, maximum: 0})}
             }
-            @position = 'after createBackendUser'
         }
 
-        addUserAssetCollection {
-            type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserAssetCollection'
-            options {
-                username = ${data.username}
+        action {
+            createBackendUser {
+                options.roles.@process.changeRoles = ${['Neos.Neos:RestrictedEditor']}
             }
-            @position = 'after addUserWorkspace'
+
+            addUserWorkspace {
+                type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserWorkspace'
+                options {
+                    username = ${data.username}
+                }
+                @position = 'after createBackendUser'
+            }
+
+            addUserAssetCollection {
+                type = 'Neos.Demo.UserRegistration.Form.Runtime:AddUserAssetCollection'
+                options {
+                    username = ${data.username}
+                }
+                @position = 'after addUserWorkspace'
+            }
         }
     }
 }
