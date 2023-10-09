@@ -26,7 +26,7 @@ As the PHP container from beach has no composer installed, we need to use the co
 Therefore, we need to add a function to our `.bashrc` or `.zshrc`.
 
 ```bash
-composer80 () {
+composer81 () {
     tty=
     tty -s && tty=--tty
     docker run \
@@ -39,7 +39,7 @@ composer80 () {
         --volume $(pwd):/application:delegated \
         --volume $HOME/.composer/cache:/home/composer/cache:delegated \
         --volume $HOME/.composer/auth.json:/home/composer/auth.json \
-        flownative/composer2:8.0 "$@"
+        flownative/composer2:8.1 "$@"
 }
 ```
 
@@ -52,7 +52,7 @@ Clone the repository and install via composer.
 ```bash
 git clone https://github.com/neos/demo.neos.io.git your/Folder/demo.neos.io
 cd your/Folder/demo.neos.io
-composer80 update
+composer81 update
 ```
 
 Start the beach instance and if you run the instance.
