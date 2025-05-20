@@ -22,16 +22,19 @@
         }
     },
     "require": {
-        "flownative/google-cloudstorage": "^5.3",
+        "flownative/google-cloudstorage": "^6.1",
         "php": "8.3",
-        "wwwision/privateresources": "^6.2",
-        "neos/cli-setup": "^8.3",
-        "neos/demo": "^8.3",
-        "neos/neos": "^8.3",
-        "neos/neos-ui": "^8.3",
+        "wwwision/privateresources": "^6.3",
+        "neos/neos-setup": "^4.0",
+        "neos/neos": "~9.0.0",
+        "neos/contentgraph-doctrinedbaladapter": "~9.0.0",
+        "neos/neos-ui": "~9.0.0",
+        "neos/seo": "~4.1",
+        "neos/demo": "~9.0.0",
         "neosdemo/userregistration": "^1.0",
         "neosdemo/matomo": "^1.0",
-        "neosdemo/override": "^1.0"
+        "neosdemo/override": "^1.0",
+        "neos/contentrepository-legacynodemigration": "^9.0"
     },
     "repositories": {
         "distributionPackages": {

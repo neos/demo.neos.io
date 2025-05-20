@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "license": "GPL-3.0+",
     "require": {
-        "flowpack/neos-matomo": "^3.5"
+        "flowpack/neos-matomo": "^4.0"
     },
     "autoload": {
         "psr-4": {

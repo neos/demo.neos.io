@@ -1,4 +1,5 @@
 <?php
+
 namespace Neos\Demo\UserRegistration\Security\Authorization\Privilege\Doctrine;
 
 /*
@@ -9,18 +10,28 @@ namespace Neos\Demo\UserRegistration\Security\Authorization\Privilege\Doctrine;
  * source code.
  */
 
-use Neos\Flow\Security\Authorization\Privilege\Entity\Doctrine\ConditionGenerator as EntityConditionGenerator;
 use Neos\Media\Domain\Model\Asset;
+use Neos\Media\Security\Authorization\Privilege\Doctrine\AssetAssetCollectionConditionGenerator;
 
 /**
  * A SQL condition generator, supporting special SQL constraints for assets
  */
-class AssetConditionGenerator extends EntityConditionGenerator
+class AssetConditionGenerator extends AbstractConditionGenerator
 {
     /**
      * @var string
      */
     protected $entityType = Asset::class;
+
+    /**
+     * @param string $contextPathForAccount
+     * @return AssetAssetCollectionConditionGenerator
+     */
+    public function isInCollection($contextPathForAccount)
+    {
+        $title = $this->getWorkSpaceNameFromUserContext($contextPathForAccount);
+        return new AssetAssetCollectionConditionGenerator($title);
+    }
 
     /**
      * This privilege method should check for any Asset that is
@@ -34,8 +45,9 @@ class AssetConditionGenerator extends EntityConditionGenerator
      * A user should have his own collection not accessible by other users (except e.g. Administrators).
      * A rare usecase where users only work in Backend and have no access to live
      */
-    public function isWithoutCollectionOrOutsideOfCollection(string $collectionTitle): AssetWithoutAssetCollectionOrTitledConditionGenerator
+    public function isWithoutCollectionOrOutsideOfCollection(string $contextPathForAccount): AssetWithoutAssetCollectionOrTitledConditionGenerator
     {
-        return new AssetWithoutAssetCollectionOrTitledConditionGenerator($collectionTitle);
+        $title = $this->getWorkSpaceNameFromUserContext($contextPathForAccount);
+        return new AssetWithoutAssetCollectionOrTitledConditionGenerator($title);
     }
 }

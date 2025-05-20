@@ -1,11 +1,12 @@
-Neos:
-  Neos:
-    modules:
-      management:
-        submodules:
-          media:
-            enabled: false
-          history:
-            enabled: false
-          mediaui:
-            position: 'start'
+# @todo Use again when a Neos 9.0 compatible version of the package is available
+#Neos:
+#  Neos:
+#    modules:
+#      management:
+#        submodules:
+#          media:
+#            enabled: false
+#          history:
+#            enabled: false
+#          mediaui:
+#            position: 'start'

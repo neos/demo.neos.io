@@ -1,13 +1,6 @@
-version: '3.7'
-
 networks:
   local_beach:
     external: true
-
-volumes:
-  application:
-    name: ${BEACH_PROJECT_NAME:?Please specify a Beach project name as BEACH_PROJECT_NAME}-application
-    driver: local
 
 services:
   webserver:
@@ -20,9 +13,7 @@ services:
       - "8081"
       - "8082"
     volumes:
-      - application:/application
-      - ./Data/Persistent:/application/Data/Persistent:delegated
-      - ./Web:/application/Web:delegated
+      - ./:/application
     environment:
       - VIRTUAL_HOST=${BEACH_VIRTUAL_HOSTS:?Please specify Beach virtual hosts as BEACH_VIRTUAL_HOSTS}
       - VIRTUAL_PORT=8080
@@ -34,35 +25,34 @@ services:
       - FLOW_HTTP_TRUSTED_PROXIES=*
       - NGINX_CACHE_ENABLE=false
 
-  devkit:
-    image: flownative/localbeach-devkit:0
-    container_name: ${BEACH_PROJECT_NAME:?Please specify a Beach project name as BEACH_PROJECT_NAME}_devkit
-    networks:
-      - local_beach
-    volumes:
-      - application:/application
-      - .:/application-on-host:delegated
-
   php:
     image: ${BEACH_PHP_IMAGE:-flownative/beach-php}:${BEACH_PHP_IMAGE_VERSION:-7.4}
     container_name: ${BEACH_PROJECT_NAME:?Please specify a Beach project name as BEACH_PROJECT_NAME}_php
 
+    extra_hosts:
+      - "host.xdebug.beach:host-gateway"
+    ports:
+      - "9000"
+      - "9003"
+      - "2022"
     networks:
       - local_beach
     depends_on:
       - webserver
       - redis
-      - devkit
     security_opt:
       - no-new-privileges
     volumes:
-      - application:/application
+      - ./:/application
       - ./Data/Persistent:/application/Data/Persistent:delegated
       - ./Data/Logs:/application/Data/Logs:delegated
       - ./Data/DoctrineMigrations:/application/Data/DoctrineMigrations
       - ./Web:/application/Web:delegated
     environment:
-      - BEACH_WAIT_FOR_SYNC=true
+      - PHP_ERROR_LOG=/opt/flownative/php/log/php.err.log
+      - PHP_ERROR_REPORTING=2147483647
+      - PHP_DISPLAY_ERRORS=on
+      - BEACH_WAIT_FOR_SYNC=false
       - BEACH_INSTANCE_NAME=${BEACH_PROJECT_NAME}
       - BEACH_FLOW_BASE_CONTEXT=${BEACH_FLOW_BASE_CONTEXT:-Development}
       - BEACH_FLOW_SUB_CONTEXT=${BEACH_FLOW_SUB_CONTEXT:-Instance}
@@ -78,6 +68,10 @@ services:
       - BEACH_PHP_TIMEZONE=${BEACH_PHP_TIMEZONE:-UTC}
       - BEACH_APPLICATION_USER_SERVICE_ENABLE=${BEACH_APPLICATION_USER_SERVICE_ENABLE:-false}
       - BEACH_APPLICATION_STARTUP_SCRIPTS_ENABLE=${BEACH_APPLICATION_STARTUP_SCRIPTS_ENABLE:-false}
+      - BEACH_APPLICATION_CUSTOM_STARTUP_SCRIPTS_ENABLE=${BEACH_APPLICATION_CUSTOM_STARTUP_SCRIPTS_ENABLE:-false}
+      - PHP_XDEBUG_ENABLE=${XDEBUG_ENABLE:-false}
+      - XDEBUG_MODE=${XDEBUG_MODE:-''}
+      - XDEBUG_CONFIG=${XDEBUG_CONFIG:-''}
       - NEOS_ADMIN_USERNAME=${NEOS_ADMIN_USERNAME:-admin}
       - NEOS_ADMIN_PASSWORD=${NEOS_ADMIN_PASSWORD:-password}
 
@@ -86,6 +80,8 @@ services:
     container_name: ${BEACH_PROJECT_NAME:?Please specify a Beach project name as BEACH_PROJECT_NAME}_redis
     networks:
       - local_beach
+    ports:
+      - "6379"
     environment:
       - REDIS_MAX_MEMORY=${BEACH_REDIS_MAX_MEMORY:-50000000}
       - REDIS_PASSWORD=${BEACH_REDIS_PASSWORD:-password}
