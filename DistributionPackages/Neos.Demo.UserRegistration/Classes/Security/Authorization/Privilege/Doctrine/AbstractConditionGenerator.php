@@ -49,7 +49,7 @@ abstract class AbstractConditionGenerator extends EntityConditionGenerator
             $contentRepositoryId = ContentRepositoryId::fromString('default');
             $userWorkspaceName = $this->metadataAndRoleRepository->findWorkspaceNameByUser($contentRepositoryId, $existingUser->getId());
 
-            return !$userWorkspaceName ? '' : $userWorkspaceName->__toString();
+            return !$userWorkspaceName ? '' : $userWorkspaceName->value;
         } catch (Exception) {
             return '';
         }
