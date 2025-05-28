@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc60df513c7f537d4aaf0bdcd4ec06d0",
+    "content-hash": "59485139039309ed27d755a2e25e79d0",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -4037,55 +4037,6 @@
                 }
             ],
             "time": "2025-04-02T10:05:05+00:00"
-        },
-        {
-            "name": "neos/contentrepository-legacynodemigration",
-            "version": "9.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/neos/contentrepository-legacynodemigration.git",
-                "reference": "458a40560304b3981e5c46911db9430e2326af3c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/neos/contentrepository-legacynodemigration/zipball/458a40560304b3981e5c46911db9430e2326af3c",
-                "reference": "458a40560304b3981e5c46911db9430e2326af3c",
-                "shasum": ""
-            },
-            "require": {
-                "league/flysystem": "^3",
-                "neos/contentrepository-core": "self.version",
-                "neos/contentrepository-export": "self.version",
-                "neos/neos": "self.version",
-                "php": ">=8.2"
-            },
-            "require-dev": {
-                "league/flysystem-memory": "^3",
-                "neos/behat": "*"
-            },
-            "type": "neos-package",
-            "autoload": {
-                "psr-4": {
-                    "Neos\\ContentRepository\\LegacyNodeMigration\\": "Classes"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "description": "Migration from the Non-Event-Sourced to the Event-Sourced world",
-            "support": {
-                "docs": "https://docs.neos.io/",
-                "forum": "https://discuss.neos.io/",
-                "source": "https://github.com/neos/contentrepository-legacynodemigration.git"
-            },
-            "funding": [
-                {
-                    "url": "https://shop.neos.io/neosfunding/",
-                    "type": "custom"
-                }
-            ],
-            "time": "2025-04-04T16:45:07+00:00"
         },
         {
             "name": "neos/contentrepository-nodeaccess",
