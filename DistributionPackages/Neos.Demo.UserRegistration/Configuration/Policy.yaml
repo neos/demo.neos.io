@@ -1,18 +1,17 @@
 privilegeTargets:
-  'Neos\Media\Security\Authorization\Privilege\ReadAssetPrivilege':
-    'Neos.Demo:SeeOwnAssetCollectionContent':
-      matcher: 'isInCollection("context.userInformation.personalWorkspaceName")'
-
   'Neos\Demo\UserRegistration\Security\Authorization\Privilege\ReadAssetPrivilege':
-    'Neos.Demo:SeeAssetsInOthersCollections':
-      matcher: 'isWithoutCollectionOrOutsideOfCollection("context.userInformation.personalWorkspaceName")'
+    'Neos.Demo:SeeOwnAssetCollectionContent':
+      matcher: 'isInCollection("context.securityContext.account")'
 
-  'Neos\Media\Security\Authorization\Privilege\ReadAssetCollectionPrivilege':
+    'Neos.Demo:SeeAssetsInOthersCollections':
+      matcher: 'isWithoutCollectionOrOutsideOfCollection("context.securityContext.account")'
+
+  'Neos\Demo\UserRegistration\Security\Authorization\Privilege\ReadAssetCollectionPrivilege':
     'Neos.Demo:SeeOwnAssetCollection':
-      matcher: 'isTitled("context.userInformation.personalWorkspaceName")'
+      matcher: 'isTitledByUserWorkspaceName("context.securityContext.account")'
 
     'Neos.Demo:SeeOtherAssetCollectionsThanOwn':
-      matcher: '!isTitled("context.userInformation.personalWorkspaceName")'
+      matcher: '!isTitledByUserWorkspaceName("context.securityContext.account")'
 
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
     'Neos.Demo:ManageAssets':

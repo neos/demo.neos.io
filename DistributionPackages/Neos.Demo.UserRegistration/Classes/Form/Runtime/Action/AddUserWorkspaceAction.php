@@ -13,17 +13,16 @@ namespace Neos\Demo\UserRegistration\Form\Runtime\Action;
  * source code.
  */
 
+use Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId;
+use Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName;
+use Neos\Demo\UserRegistration\Domain\Service\Workspace\WorkspaceService;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\ActionResponse;
 use Neos\Flow\Persistence\Doctrine\PersistenceManager;
 use Neos\Fusion\Form\Runtime\Domain\Exception\ActionException;
 use Neos\Neos\Domain\Exception as DomainException;
-use Neos\Neos\Domain\Model\User;
 use Neos\Neos\Domain\Service\UserService;
-use Neos\Neos\Utility\User as UserUtility;
 use Neos\Fusion\Form\Runtime\Action\AbstractAction;
-use Neos\ContentRepository\Domain\Repository\WorkspaceRepository;
-use Neos\ContentRepository\Domain\Model\Workspace;
 
 class AddUserWorkspaceAction extends AbstractAction
 {
@@ -31,10 +30,10 @@ class AddUserWorkspaceAction extends AbstractAction
     protected ?UserService $userService;
 
     #[Flow\Inject]
-    protected ?WorkspaceRepository $workspaceRepository;
+    protected ?PersistenceManager $persistenceManager;
 
     #[Flow\Inject]
-    protected ?PersistenceManager $persistenceManager;
+    protected WorkspaceService $workspaceService;
 
     /**
      * @throws ActionException|DomainException
@@ -46,47 +45,11 @@ class AddUserWorkspaceAction extends AbstractAction
         if ($existingUser === null) {
             throw new ActionException('User not found, cannot add workspace.');
         }
-        $userWorkspaceName = UserUtility::getPersonalWorkspaceNameForUsername($accountIdentifier);
-        $privateWorkspaceForUser = $this->workspaceRepository->findOneByName('private-' . $userWorkspaceName);
 
-        if (!$privateWorkspaceForUser) {
-            $this->addWorkspaceForUser($userWorkspaceName, $existingUser);
-            $this->persistenceManager->persistAll();
-        }
+        $this->workspaceService->createPersonalWorkspace($existingUser, WorkspaceName::forLive());
+        $this->workspaceService->createReviewWorkspaceIfNotExists($existingUser);
+        $this->persistenceManager->persistAll();
+
         return null;
-    }
-
-    /**
-     * Adds a workspace for the new user
-     * so that he has a sandboxed playground
-     */
-    protected function addWorkspaceForUser(string $userWorkspaceName, User $user): void
-    {
-        //create private user workspace
-        //@see Neos\Neos\Ui\Controller\BackendServiceController->changeBaseWorkspace()
-        $liveWorkspace = $this->workspaceRepository->findOneByName('live');
-
-        $privateWorkspaceNameForUser = 'private-' . $userWorkspaceName;
-        $privateWorkspaceForUser = new Workspace(
-            $privateWorkspaceNameForUser,
-            $liveWorkspace,
-            $user
-        );
-        $privateWorkspaceForUser->setTitle('Review workspace for ' . $user->getLabel());
-        $this->workspaceRepository->add($privateWorkspaceForUser);
-
-        $userWorkspace = $this->workspaceRepository->findOneByName($userWorkspaceName);
-        if ($userWorkspace === null) {
-            $userWorkspace = new Workspace(
-                $userWorkspaceName,
-                $privateWorkspaceForUser,
-                $user
-            );
-
-            $this->workspaceRepository->add($userWorkspace);
-        } else {
-            $userWorkspace->setBaseWorkspace($privateWorkspaceForUser);
-            $this->workspaceRepository->update($userWorkspace);
-        }
     }
 }

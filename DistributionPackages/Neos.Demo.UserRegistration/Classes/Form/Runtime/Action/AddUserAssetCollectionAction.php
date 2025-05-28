@@ -13,6 +13,8 @@ namespace Neos\Demo\UserRegistration\Form\Runtime\Action;
  * source code.
  */
 
+use Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId;
+use Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\ActionResponse;
 use Neos\Flow\Persistence\Doctrine\PersistenceManager;
@@ -21,8 +23,8 @@ use Neos\Fusion\Form\Runtime\Domain\Exception\ActionException;
 use Neos\Media\Domain\Model\AssetCollection;
 use Neos\Media\Domain\Repository\AssetCollectionRepository;
 use Neos\Neos\Domain\Exception as DomainException;
+use Neos\Neos\Domain\Repository\WorkspaceMetadataAndRoleRepository;
 use Neos\Neos\Domain\Service\UserService;
-use Neos\Neos\Utility\User as UserUtility;
 
 class AddUserAssetCollectionAction extends AbstractAction
 {
@@ -35,27 +37,35 @@ class AddUserAssetCollectionAction extends AbstractAction
     #[Flow\Inject]
     protected ?PersistenceManager $persistenceManager;
 
+    #[Flow\Inject]
+    protected WorkspaceMetadataAndRoleRepository $metadataAndRoleRepository;
+
     /**
      * @throws ActionException|DomainException
      */
     public function perform(): ?ActionResponse
     {
-        $accountIdentifier =  $this->options['username'];
+        $accountIdentifier = $this->options['username'];
         $existingUser = $this->userService->getUser($accountIdentifier, 'Neos.Neos:Backend');
         if ($existingUser === null) {
             throw new ActionException('User not found, cannot add collection.');
         }
-        $userWorkspaceName = UserUtility::getPersonalWorkspaceNameForUsername($accountIdentifier);
-        $this->addAssetCollectionForUser($userWorkspaceName);
-        $this->persistenceManager->persistAll();
+
+        $contentRepositoryId = ContentRepositoryId::fromString('default');
+        $userWorkspaceName = $this->metadataAndRoleRepository->findWorkspaceNameByUser($contentRepositoryId, $existingUser->getId());
+        if ($userWorkspaceName !==null) {
+            $this->addAssetCollectionForUser($userWorkspaceName);
+            $this->persistenceManager->persistAll();
+        }
         return null;
     }
 
     /**
      * Adds a workspace for the new user so that he has a sandboxed playground
      */
-    protected function addAssetCollectionForUser(string $userWorkspaceName): void {
-        $existingAssetCollection = $this->assetCollectionRepository->findOneByTitle($userWorkspaceName);
+    protected function addAssetCollectionForUser(WorkspaceName $userWorkspaceName): void
+    {
+        $existingAssetCollection = $this->assetCollectionRepository->findOneByTitle($userWorkspaceName->__toString());
         if ($existingAssetCollection === null) {
             $this->assetCollectionRepository->add(new AssetCollection($userWorkspaceName));
         }

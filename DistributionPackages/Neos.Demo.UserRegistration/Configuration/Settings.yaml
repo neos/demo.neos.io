@@ -1,0 +1,9 @@
+Neos:
+  Demo:
+    UserRegistration:
+        # Settings to make review handling easier
+      reviewWorkspace:
+          # name of the workspace to be created for the user
+        workspaceNameFormat: 'to be reviewed (%s)'
+          # changes the base workspace to the review workspace on login
+        changeBaseWorkspace: true
