@@ -15,17 +15,13 @@ namespace Neos\Demo\UserRegistration\Form\Runtime\Action;
 
 use Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId;
 use Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName;
+use Neos\Demo\UserRegistration\Domain\Service\Workspace\WorkspaceService;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\ActionResponse;
 use Neos\Flow\Persistence\Doctrine\PersistenceManager;
 use Neos\Fusion\Form\Runtime\Domain\Exception\ActionException;
 use Neos\Neos\Domain\Exception as DomainException;
-use Neos\Neos\Domain\Model\User;
-use Neos\Neos\Domain\Model\WorkspaceDescription;
-use Neos\Neos\Domain\Model\WorkspaceTitle;
-use Neos\Neos\Domain\Repository\WorkspaceMetadataAndRoleRepository;
 use Neos\Neos\Domain\Service\UserService;
-use Neos\Neos\Domain\Service\WorkspaceService;
 use Neos\Fusion\Form\Runtime\Action\AbstractAction;
 
 class AddUserWorkspaceAction extends AbstractAction
@@ -39,9 +35,6 @@ class AddUserWorkspaceAction extends AbstractAction
     #[Flow\Inject]
     protected WorkspaceService $workspaceService;
 
-    #[Flow\Inject]
-    protected WorkspaceMetadataAndRoleRepository $metadataAndRoleRepository;
-
     /**
      * @throws ActionException|DomainException
      */
@@ -53,30 +46,10 @@ class AddUserWorkspaceAction extends AbstractAction
             throw new ActionException('User not found, cannot add workspace.');
         }
 
-        $contentRepositoryId = ContentRepositoryId::fromString('default');
-        $privateWorkspaceNameForUser = $this->metadataAndRoleRepository->findWorkspaceNameByUser($contentRepositoryId, $existingUser->getId());
+        $this->workspaceService->createPersonalWorkspace($existingUser, WorkspaceName::forLive());
+        $this->workspaceService->createReviewWorkspaceIfNotExists($existingUser);
+        $this->persistenceManager->persistAll();
 
-        if ($privateWorkspaceNameForUser === null) {
-            $this->addWorkspaceForUser($contentRepositoryId, $existingUser);
-            $this->persistenceManager->persistAll();
-        }
         return null;
-    }
-
-    /**
-     * Adds a workspace for the new user
-     * so that he has a sandboxed playground
-     */
-    protected function addWorkspaceForUser(ContentRepositoryId $contentRepositoryId, User $user): void
-    {
-        $workspaceName = $this->workspaceService->getUniqueWorkspaceName($contentRepositoryId, $user->getLabel());
-        $this->workspaceService->createPersonalWorkspace(
-            $contentRepositoryId,
-            $workspaceName,
-            WorkspaceTitle::fromString('Review workspace for ' . $user->getLabel()),
-            WorkspaceDescription::createEmpty(),
-            WorkspaceName::forLive(),
-            $user->getId(),
-        );
     }
 }

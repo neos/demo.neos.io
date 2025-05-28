@@ -43,6 +43,9 @@ abstract class AbstractConditionGenerator extends EntityConditionGenerator
             $propertyConditionGenerator = new PropertyConditionGenerator('');
             /** @var Account $account */
             $account = $propertyConditionGenerator->getValueForOperand($contextPathForAccount);
+            if (!$account instanceof Account) {
+                return '';
+            }
             $accountIdentifier = $account->getAccountIdentifier();
 
             $existingUser = $this->userService->getUser($accountIdentifier, 'Neos.Neos:Backend');
