@@ -21,7 +21,8 @@ if [ "${DAY_OF_WEEK}" == "1" ] && [ "${CURRENT_HOUR}" == "03" ] ; then
 
   #rebuild application
   /application/flow doctrine:migrate
-  /application/flow site:import --package-key=Neos.Demo
+  /application/flow cr:setup
+  /application/flow site:importall --package-key=Neos.Demo
   /application/flow user:create $NEOS_ADMIN_USERNAME $NEOS_ADMIN_PASSWORD Admin User
   /application/flow user:addrole $NEOS_ADMIN_USERNAME Administrator
   /application/flow resource:publish
