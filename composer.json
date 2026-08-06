@@ -15,7 +15,7 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin",
         "platform": {
-            "php": "8.3"
+            "php": "8.5"
         },
         "allow-plugins": {
             "neos/composer-plugin": true
@@ -23,14 +23,14 @@
     },
     "require": {
         "flownative/google-cloudstorage": "^6.1",
-        "php": "8.3",
+        "php": "8.5",
         "wwwision/privateresources": "^6.3",
         "neos/neos-setup": "^4.0",
-        "neos/neos": "~9.0.0",
-        "neos/contentgraph-doctrinedbaladapter": "~9.0.0",
-        "neos/neos-ui": "~9.0.0",
+        "neos/neos": "~9.1.0",
+        "neos/contentgraph-doctrinedbaladapter": "~9.1.0",
+        "neos/neos-ui": "~9.1.0",
         "neos/seo": "~4.1",
-        "neos/demo": "~9.0.0",
+        "neos/demo": "~9.1.0",
         "neosdemo/userregistration": "^1.0",
         "neosdemo/matomo": "^1.0",
         "neosdemo/override": "^1.0"
